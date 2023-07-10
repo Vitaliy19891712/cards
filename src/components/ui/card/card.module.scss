@@ -1,0 +1,18 @@
+.card {
+  display: flex;
+
+  flex-direction: column;
+
+  margin-top: 36px;
+  padding: 33px 26px 29px;
+  max-width: 420px;
+
+  border: 1px solid #313131;
+  background-color: var(--color-dark-700);
+
+  text-align: center;
+}
+
+.title {
+  align-items: center;
+}

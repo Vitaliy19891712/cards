@@ -1,9 +1,15 @@
 html {
   box-sizing: border-box;
   font-size: 100%;
-
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
 }
 
 *,
@@ -25,9 +31,9 @@ option {
   color: inherit;
 }
 
-a:visited {
-  color: inherit;
-}
+// a:visited {
+//   color: inherit;
+// }
 
 body {
   margin: 0;
