@@ -38,15 +38,19 @@
     }
 
     .checkboxRoot {
-      width: 16px;
-      height: 16px;
+      width: 24px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-image: url("./../../../assets/checkboxUnchecked.svg");
+      background-image: url("./../../../assets/icons/checkboxUnchecked.svg");
+      background-repeat: no-repeat;
+      background-position: center;
 
       &:disabled {
-        background-image: url("./../../../assets/checkboxUncheckedDisabled.svg");
+        background-image: url("./../../../assets/icons/checkboxUncheckedDisabled.svg");
+        background-repeat: no-repeat;
+        background-position: center;
       }
     }
 
