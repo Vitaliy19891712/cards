@@ -64,6 +64,7 @@
 
 
   .label {
+    user-select: none;
     font-family: var(--font-family-primary);
     font-size: var(--font-size-s);
     font-style: normal;

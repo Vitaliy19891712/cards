@@ -1,18 +1,22 @@
-import { Input } from './components/ui/input'
-import { EyeOutline, SearchOutline } from './assets/icons'
+import { TabSwitcher } from './components/ui/tabswitcher'
 
 export function App() {
   return (
-    <div>
-      <Input
-        iconEnd={<EyeOutline />}
-        iconStart={<SearchOutline />}
-        placeholder={'Input'}
-        label={'label'}
-        search={true}
-        onClearClick={() => {}}
-        value={'qwe'}
-      />
-    </div>
+    <TabSwitcher
+      tabs={[
+        {
+          title: 'string',
+          value: 'string',
+        },
+        {
+          title: 'value',
+          value: 'value',
+        },
+        {
+          title: 'value1',
+          value: 'value1',
+        },
+      ]}
+    />
   )
 }

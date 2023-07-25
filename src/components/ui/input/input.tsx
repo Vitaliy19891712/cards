@@ -35,7 +35,7 @@ export const Input = forwardRef<HTMLInputElement, InputPropsType>(
     return (
       <div className={className.wrapper}>
         <div className={className.label}>{label}</div>
-        <div className={className.inputWrapper}>
+        <div className={className.inputWrapper} tabIndex={0}>
           {search && iconStart}
           <input
             className={className.input}

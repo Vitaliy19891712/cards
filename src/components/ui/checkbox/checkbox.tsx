@@ -9,7 +9,6 @@ type CheckboxPropsType = {
   disabled?: boolean
   required?: boolean
   label?: string
-  id?: string
 }
 
 export const Checkbox: React.FC<CheckboxPropsType> = ({
@@ -18,7 +17,6 @@ export const Checkbox: React.FC<CheckboxPropsType> = ({
   disabled,
   required,
   label,
-  id,
 }) => {
   const style = disabled ? `${s.buttonWrapper} ${s.disabled}` : s.buttonWrapper
 
@@ -31,7 +29,7 @@ export const Checkbox: React.FC<CheckboxPropsType> = ({
           onCheckedChange={onCheckedChange}
           disabled={disabled}
           required={required}
-          id={id}
+          id={'c1'}
         >
           <CheckboxRadix.Indicator className={s.checkboxIndicator} asChild>
             {!disabled ? <СheckboxChecked /> : <CheckboxCheckedDisabled />}
@@ -39,7 +37,7 @@ export const Checkbox: React.FC<CheckboxPropsType> = ({
         </CheckboxRadix.Root>
       </div>
       {label && (
-        <label className={s.label} htmlFor={id}>
+        <label className={s.label} htmlFor={'c1'}>
           {label}
         </label>
       )}

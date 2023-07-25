@@ -1,0 +1,36 @@
+.button {
+  display: inline;
+  ;
+}
+
+.header {
+  height: 60px;
+  background-color: var(--color-dark-700);
+
+
+  .container {
+    max-width: 1006px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .avatarWrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      height: 100%;
+    }
+
+    .name {
+      border-bottom: 1px dashed #fff;
+      line-height: .90;
+    }
+
+    .avatar {
+      max-height: 36px;
+    }
+  }
+}
