@@ -1,0 +1,95 @@
+.root {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .wrapperItem {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    &[aria-disabled=true] {
+      color: var(--color-light-900);
+      pointer-events: none;
+    }
+
+    .item {
+      cursor: pointer;
+      position: relative;
+      padding: 2.5px;
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid var(--color-accent-500);
+      border-radius: 50%;
+      background-color: transparent;
+
+
+
+      &:focus-visible::before {
+        content: " ";
+        width: 36px;
+        height: 36px;
+        top: -12px;
+        left: -12px;
+        background-color: var(--color-dark-700);
+        position: absolute;
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      &:hover::before {
+        content: " ";
+        width: 36px;
+        height: 36px;
+        top: -12px;
+        left: -12px;
+        background-color: var(--color-dark-500);
+        position: absolute;
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      &:active::before {
+        content: " ";
+        width: 36px;
+        height: 36px;
+        top: -12px;
+        left: -12px;
+        background-color: var(--color-accent-900);
+        position: absolute;
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      &:disabled {
+        cursor: inherit;
+        border: 1.5px solid var(--color-accent-900);
+
+      }
+
+
+      .indicator {
+        margin-right: 2px;
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--color-accent-500);
+        position: relative;
+        z-index: 5;
+
+        &:disabled::before {
+          cursor: inherit;
+          background-color: var(--color-accent-900);
+        }
+      }
+    }
+
+    .label {
+      cursor: pointer;
+    }
+  }
+
+
+}

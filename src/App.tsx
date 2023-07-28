@@ -1,16 +1,15 @@
-import { Pagination } from './components/ui/pagination'
+import { Radio } from './components/ui/radio'
 
 export function App() {
   return (
-    <Pagination
-      currentPage={1}
-      onPageChange={() => {}}
-      pageSize={10}
-      totalCount={104}
-      perPage={10}
-      perPageOptions={[10, 20, 30]}
-      onPerPageChange={() => {}}
+    <Radio
+      items={[
+        { title: 'RadioGroup1' },
+        { title: 'RadioGroup2' },
+        { title: 'RadioGroup3' },
+        { title: 'RadioGroup4' },
+      ]}
+      onChange={() => {}}
     />
   )
-  // return <SelectUi perPageOptions={[10, 20, 30]} />
 }
