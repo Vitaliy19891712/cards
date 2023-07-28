@@ -1,0 +1,67 @@
+.pagination {
+  display: flex;
+  gap: 12px;
+
+  .arrow {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+
+    &:focus {
+      border: 1px solid var(--color-info-900);
+      border-radius: 2px;
+    }
+
+    &:disabled {
+      color: var(--color-dark-900);
+      cursor: inherit;
+    }
+
+    .svg {
+      display: block;
+    }
+  }
+
+  .pageButton {
+    padding: 0 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+
+    &:hover {
+      background-color: var(--color-dark-500);
+      border-radius: 2px;
+    }
+
+    &:focus {
+      border: 1px solid var(--color-info-900);
+      border-radius: 2px;
+    }
+
+    &:disabled {
+      background-color: var(--color-light-100);
+      color: var(--color-dark-900);
+      border-radius: 2px;
+      cursor: inherit;
+    }
+  }
+
+  .select {
+    display: flex;
+    gap: 8px;
+
+    .silectItem {
+      background-color: var(--color-dark-700);
+      border: 1px solid var(--color-dark-500);
+      border-radius: 2px;
+    }
+
+    .silectItem[data-headlessui-state=open] {
+      border-radius: 2px 2px 0 0;
+    }
+  }
+}
