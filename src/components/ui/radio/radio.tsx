@@ -15,7 +15,7 @@ export type RadioProps = {
 
 export const Radio: React.FC<RadioProps> = ({ items, disabled, onChange }) => {
   return (
-    <RadioGroup.Root className={s.root} onValueChange={onChange} loop={true}>
+    <RadioGroup.Root className={s.root} onValueChange={onChange}>
       {items.map(i => {
         return (
           <div className={s.wrapperItem} aria-disabled={disabled}>

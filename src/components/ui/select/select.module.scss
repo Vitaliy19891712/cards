@@ -134,10 +134,7 @@
     background-color: var(--color-action-hover);
   }
 
-  &[data-headlessui-state='selected'],
-  &[data-headlessui-state='active selected'] {
-    // color: var(--color-accent-500);
-  }
+
 
   &:hover {
     color: var(--color-accent-300);
