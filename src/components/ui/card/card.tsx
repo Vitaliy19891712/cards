@@ -5,17 +5,18 @@ import { ReactNode } from 'react'
 type CardPropsType = {
   children?: ReactNode
   title?: string
+  className?:string
 }
 
-export const Card: React.FC<CardPropsType> = ({ children, title }) => {
+export const Card: React.FC<CardPropsType> = ({ children, title ,className}) => {
   return (
-    <div className={s.card}>
+    <div className={`${s.card} ${className}`} >
       {title && (
         <Typography as={'h1'} variant={'large'} className={s.title}>
           {title}
         </Typography>
       )}
-      <div>{children}</div>
+      {children}
     </div>
   )
 }

@@ -1,0 +1,38 @@
+.card {
+  padding: 33px 36px 29px;
+  min-width: 420px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 27px;
+  }
+
+  .forgot {
+    display: block;
+    text-align: right;
+    cursor: pointer;
+    color: var(--color-light-100);
+    margin-bottom: 66px;
+  }
+
+  .haveAccount {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 11px;
+    color: var(--color-light-900);
+  }
+
+  .signIn {
+    color: var(--color-accent-500);
+    text-decoration: underline;
+  }
+}
+
+.textField {
+  margin-bottom: 60px;
+  text-align: left;
+}
+
+.textField:not(:last-of-type) {
+  margin-bottom: 24px;
+}

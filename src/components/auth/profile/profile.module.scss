@@ -1,0 +1,68 @@
+.card {
+  padding: 33px 36px 41px;
+  min-width: 420px;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+  }
+
+  .avatar {
+    position: relative;
+    max-width: 96px;
+    max-height: 96px;
+    margin-top: 27px;
+    margin-bottom: 6px;
+    border-radius: 50%;
+    z-index: 2;
+
+    img {
+      object-fit: cover;
+      width: 96px;
+      height: 96px;
+    }
+
+    .editIcon {
+      position: absolute;
+      z-index: 5;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      background-color: var(--color-dark-300);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+
+  .form {
+    width: 100%;
+
+    .textField {
+      margin-top: 12px;
+      margin-bottom: 36px;
+      text-align: left;
+    }
+
+    .button {
+      margin-bottom: 43px;
+    }
+  }
+
+  .nameWrapper {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+  }
+
+  .text {
+    display: block;
+    margin-bottom: 13px;
+    opacity: 0.5;
+  }
+
+}
