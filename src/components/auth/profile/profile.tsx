@@ -42,11 +42,11 @@ export const Profile: React.FC<EditProfilePropsType> = ({
 
   const saveChangeHandler = async () => {
     try {
-      const res = await handleSubmit()
+      await handleSubmit()
       setIsEdit(false)
     } catch (error) {}
   }
-
+  
   let avatar = photo && !isAvaBroken ? photo : avatarLogo
 
   return (
