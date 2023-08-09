@@ -1,4 +1,3 @@
-import { ComponentProps } from 'react'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import s from './radio.module.scss'
 import { Typography } from '../typography'

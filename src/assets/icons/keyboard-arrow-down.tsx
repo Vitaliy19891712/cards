@@ -1,6 +1,5 @@
-import * as React from 'react'
-import { SVGProps, Ref, forwardRef, memo } from 'react'
-const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+import { SVGProps, forwardRef, memo } from 'react'
+const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="100%"
     height="100%"
