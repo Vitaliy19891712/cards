@@ -4,7 +4,6 @@ import { ControlledCheckbox } from '../../ui/controlled'
 import { Card } from '../../ui/card'
 import { Typography } from '../../ui/typography'
 import s from './login-form.module.scss'
-import { EyeOutline } from '../../../assets/icons'
 import { useLoginForm } from './use-login-form'
 import { SubmitHandler } from 'react-hook-form'
 

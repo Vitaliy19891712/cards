@@ -15,7 +15,6 @@ export const SliderCommon: React.FC<IProps> = ({
   max,
   currentMin,
   currentMax,
-  disabled,
   onChange,
 }) => {
   return (

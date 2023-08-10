@@ -36,13 +36,7 @@ export const Pagination: React.FC<PaginationPropsType> = ({
   if (currentPage === 0 || paginationRange.length < 2) {
     return null
   }
-  const onNext = () => {
-    onPageChange(currentPage + 1)
-  }
 
-  const onPrevious = () => {
-    onPageChange(currentPage - 1)
-  }
   const handleNextPageClicked = useCallback(() => {
     onPageChange(currentPage + 1)
   }, [currentPage, onPageChange])
