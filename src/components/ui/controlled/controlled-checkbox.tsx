@@ -7,11 +7,7 @@ type TypeControlledTextFieldProps<T extends FieldValues> = Omit<
 > &
   Omit<CheckboxPropsType, 'onChange' | 'value' | 'checked'>
 
-// type TypeControlledTextFieldProps<T extends FieldValues> = {
-//   control: Control<T>
-//   name: FieldPath<T>
-//   shouldUnregister: boolean
-// } & Omit<CheckboxProps, 'onChange' | 'value'>
+
 
 export const ControlledCheckbox = <T extends FieldValues>({
   control,
