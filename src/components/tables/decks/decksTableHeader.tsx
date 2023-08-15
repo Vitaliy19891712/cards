@@ -1,5 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
-
+import s from './decksTableHeader.module.scss'
+import { DecksTableCell } from './decksTableCell'
+import { Typography } from '../../ui/typography'
 export type Sort = {
   key: string
   direction: 'asc' | 'desc'
@@ -17,7 +19,7 @@ type TableHeaderPropsType = Omit<
   } & ComponentPropsWithoutRef<'thead'>,
   'children'
 >
-export const TableHeader: React.FC<TableHeaderPropsType> = ({ columns, onSort, sort }) => {
+export const DecksTableHeader: React.FC<TableHeaderPropsType> = ({ columns, onSort, sort }) => {
   const handleSort = (key: string, isSortable: boolean) => () => {
     if (!isSortable) return
 
@@ -37,14 +39,14 @@ export const TableHeader: React.FC<TableHeaderPropsType> = ({ columns, onSort, s
   }
   return (
     <thead>
-      <tr>
+      <tr className={s.header}>
         {columns.map(c => {
           const showSort = c.isSortable && sort && sort.key === c.key
           return (
-            <th key={c.key} onClick={handleSort(c.key, c.isSortable)}>
-              {c.title}
+            <DecksTableCell as={'th'} key={c.key} onClick={handleSort(c.key, c.isSortable)}>
+              <Typography variant={'subtitle2'}>{c.title}</Typography>
               {showSort && <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>}
-            </th>
+            </DecksTableCell>
           )
         })}
       </tr>
