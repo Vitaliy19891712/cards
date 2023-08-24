@@ -33,6 +33,7 @@ export const Input: React.FC<InputPropsType> = ({
     error: clsx(s.erorr),
     button: clsx(s.button),
   }
+
   const isShowClearButton = onClearClick && rest?.value?.length! > 0
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (onEnter && e.key === 'Enter') {

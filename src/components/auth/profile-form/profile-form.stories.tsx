@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Profile } from '.'
+import { ProfileForm } from '.'
 
 const meta = {
-  title: 'Components/Profile',
-  component: Profile,
+  title: 'Components/ProfileForm',
+  component: ProfileForm,
   tags: ['autodocs'],
   argTypes: {},
-} satisfies Meta<typeof Profile>
+} satisfies Meta<typeof ProfileForm>
 
 export default meta
 type Story = StoryObj<typeof meta>

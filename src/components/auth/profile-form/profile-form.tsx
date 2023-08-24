@@ -1,7 +1,7 @@
 import { Button } from '../../ui/button'
 import { Card } from '../../ui/card'
 import { Typography } from '../../ui/typography'
-import s from './profile.module.scss'
+import s from './profile-form.module.scss'
 import { ButtonArrow, EditIcon } from '../../../assets/icons'
 import avatarLogo from './../../../assets/images/avatar.png'
 import { useState } from 'react'
@@ -18,7 +18,7 @@ type EditProfilePropsType = {
   photo?: string
 }
 
-export const Profile: React.FC<EditProfilePropsType> = ({
+export const ProfileForm: React.FC<EditProfilePropsType> = ({
   handlerLogout,
   handlerLoadAvatar,
   onSubmit,

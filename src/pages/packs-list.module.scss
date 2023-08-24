@@ -1,0 +1,31 @@
+  .container {
+    max-width: 1006px;
+    height: 100%;
+    margin: 0 auto;
+
+    .topLine {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 33px;
+    }
+
+    .settingBar {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+
+      margin-top: 7px;
+
+      margin-bottom: 36px;
+
+      .input {
+        max-width: 299px;
+      }
+
+      .flex {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  }

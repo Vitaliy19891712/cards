@@ -1,6 +1,7 @@
 import * as Tabs from '@radix-ui/react-tabs'
 import { ReactNode } from 'react'
 import s from './tabs.module.scss'
+import { Typography } from '../typography'
 
 export type TabsPropsType = {
   tabs: Array<TabsType>
@@ -36,7 +37,7 @@ export const TabSwitcher: React.FC<TabsPropsType> = ({ tabs, value, onValueChang
             disabled={t.disabled}
             key={t.value}
           >
-            {t.title}
+            <Typography variant={'body1'}>{t.title}</Typography>
           </Tabs.Trigger>
         ))}
       </Tabs.List>

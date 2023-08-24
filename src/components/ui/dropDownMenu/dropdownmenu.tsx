@@ -4,7 +4,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 type IProps = {
   onChange: (open: boolean) => void
   modal?: boolean
-  children: ReactNode
+  children?: ReactNode
   items: Array<ReactNode>
   trigger?: ReactNode
 }
@@ -17,8 +17,12 @@ export const Dropdownmenu: React.FC<IProps> = ({ modal, items, trigger }) => {
       <DropdownMenu.Trigger asChild>{trigger}</DropdownMenu.Trigger>
 
       <DropdownMenu.Content className={s.content} loop={true} sideOffset={4}>
-        {items.map(i => {
-          return <DropdownMenu.Item className={s.item}>{i}</DropdownMenu.Item>
+        {items.map((item, index) => {
+          return (
+            <DropdownMenu.Item key={index} className={s.item}>
+              {item}
+            </DropdownMenu.Item>
+          )
         })}
 
         <DropdownMenu.Separator className={s.separator} />
