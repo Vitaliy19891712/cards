@@ -13,6 +13,7 @@ type RegisterFormPropsType = {
 export const RegisterForm: React.FC<RegisterFormPropsType> = ({ onSubmit }) => {
   const { handleSubmit, control } = useRegisterForm(onSubmit)
 
+  
   return (
     <Card className={s.card}>
       <Typography variant={'large'} as={'h1'}>

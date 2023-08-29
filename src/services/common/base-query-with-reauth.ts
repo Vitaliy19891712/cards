@@ -8,9 +8,9 @@ const mutex = new Mutex()
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_BASE_API_URL,
   credentials: 'include',
-  prepareHeaders: headers => {
-    headers.append('x-auth-skip', 'true')
-  },
+  // prepareHeaders: headers => {
+  //   headers.append('x-auth-skip', 'true')
+  // },
 })
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,

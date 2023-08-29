@@ -1,13 +1,15 @@
 import { LoginForm } from '../components/auth/login-form'
-import { useLoginMutation } from '../services'
+import { useLazyMeQuery, useLoginMutation, useLogoutMutation, useMeQuery } from '../services'
 
 export const Login = () => {
-  const [login, result] = useLoginMutation()
-  // console.log(result)
-
+  const [login] = useLoginMutation()
+  const [trigger] = useLazyMeQuery()
+  const [logout] = useLogoutMutation()
   return (
     <>
       <LoginForm onSubmit={login}></LoginForm>
+      <button onClick={e => trigger()}>trigger</button>
+      <button onClick={e => logout()}>trigger</button>
     </>
   )
 }
