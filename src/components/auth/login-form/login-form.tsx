@@ -8,7 +8,7 @@ import { useLoginForm } from './use-login-form'
 import { SubmitHandler } from 'react-hook-form'
 
 type LoginFormPropsType = {
-  onSubmit: SubmitHandler<{ email: string; password: string; rememberMe?: boolean | undefined }>
+  onSubmit: SubmitHandler<{ email: string; password: string; rememberMe: boolean}>
 }
 
 export const LoginForm: React.FC<LoginFormPropsType> = ({ onSubmit }) => {

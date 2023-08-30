@@ -6,13 +6,15 @@ import avatarLogo from './../../../assets/images/avatar.png'
 import { Typography } from '../typography'
 import { Outlet } from 'react-router-dom'
 import { Dropdownmenu } from '../dropDownMenu'
+import { User } from '../../../services'
+
 export type HeaderProps = {
   isAuth?: boolean
-  name?: string
-  photo?: string
+  userInfo?: User | null
+  onSignOut?: () => void
 } & ComponentProps<'header'>
 
-export const Header: React.FC<HeaderProps> = ({ isAuth = false, name, photo, ...rest }) => {
+export const Header: React.FC<HeaderProps> = ({ isAuth = false, userInfo, ...rest }) => {
   const className = {
     header: s.header,
     container: s.container,
@@ -21,7 +23,9 @@ export const Header: React.FC<HeaderProps> = ({ isAuth = false, name, photo, ...
     name: s.name,
     avatar: s.avatar,
   }
-  let avatar = photo ? photo : avatarLogo
+
+  let avatar = userInfo?.avatar ? userInfo.avatar : avatarLogo
+
   return (
     <header className={className.header} {...rest}>
       <div className={className.container}>
@@ -39,11 +43,16 @@ export const Header: React.FC<HeaderProps> = ({ isAuth = false, name, photo, ...
         ) : (
           <Dropdownmenu
             onChange={() => {}}
-            items={[<div>11111111111111111111</div>, <div>222222222222222222222</div>, <div>3</div>, <div>4</div>]}
+            items={[
+              <div>11111111111111111111</div>,
+              <div>222222222222222222222</div>,
+              <div>3</div>,
+              <div>4</div>,
+            ]}
             trigger={
               <div className={className.avatarWrapper}>
                 <Typography variant={'subtitle1'} className={className.name}>
-                  {name}
+                  {userInfo?.name}
                 </Typography>
                 <img className={className.avatar} src={avatar} alt="avatar" />
               </div>

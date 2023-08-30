@@ -5,11 +5,18 @@ export const Login = () => {
   const [login] = useLoginMutation()
   const [trigger] = useLazyMeQuery()
   const [logout] = useLogoutMutation()
+
+
+
   return (
     <>
       <LoginForm onSubmit={login}></LoginForm>
-      <button onClick={e => trigger()}>trigger</button>
-      <button onClick={e => logout()}>trigger</button>
+      <button onClick={e => trigger()} style={{ color: 'black' }}>
+        me
+      </button>
+      <button onClick={e => logout()} style={{ color: 'black' }}>
+        logout
+      </button>
     </>
   )
 }

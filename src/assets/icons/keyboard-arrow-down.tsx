@@ -1,6 +1,10 @@
-import { SVGProps, forwardRef, memo } from 'react'
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
+import { LegacyRef, SVGProps, forwardRef, memo } from 'react'
+const SvgComponent = (
+  props: SVGProps<SVGSVGElement>,
+  ref: LegacyRef<SVGSVGElement> | undefined
+) => (
   <svg
+    ref={ref}
     width="100%"
     height="100%"
     viewBox="0 0 24 24"

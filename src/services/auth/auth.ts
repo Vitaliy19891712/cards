@@ -1,4 +1,4 @@
-import { LogoutArgs, SignUpArgs, User } from './types'
+import { LogoutArgs, ResetPasswordArgs, SignUpArgs, User } from './types'
 import { baseApi } from '../baseApi'
 
 export const authApi = baseApi.injectEndpoints({
@@ -10,7 +10,7 @@ export const authApi = baseApi.injectEndpoints({
         body,
       }),
       invalidatesTags: ['Me'],
-      transformErrorResponse(baseQueryReturnValue, meta, arg) {},
+      // transformErrorResponse(baseQueryReturnValue, meta, arg) {},
     }),
     logout: builder.mutation<void, void>({
       query: () => ({
@@ -18,10 +18,10 @@ export const authApi = baseApi.injectEndpoints({
         method: 'POST',
       }),
       invalidatesTags: ['Me'],
-      transformErrorResponse(baseQueryReturnValue, meta, arg) {},
+      // transformErrorResponse(baseQueryReturnValue, meta, arg) {},
     }),
     signUp: builder.mutation<User, SignUpArgs>({
-      query: body => ({
+      query: (body: { email: any; password: any }) => ({
         url: '/v1/auth/sign-up',
         method: 'POST',
         body: {
@@ -42,8 +42,40 @@ export const authApi = baseApi.injectEndpoints({
       }),
       providesTags: ['Me'],
     }),
+    updateMe: builder.mutation<User, Pick<User, 'avatar' | 'name' | 'email'>>({
+      query: body => ({
+        url: '/v1/auth/me',
+        method: 'PATCH',
+        body,
+      }),
+    }),
+    recoverPassword: builder.mutation<void, Pick<SignUpArgs, 'html' | 'email' | 'password'>>({
+      query: email => ({
+        url: '/v1/auth/recover-password',
+        method: 'POST',
+        body: {
+          html: '<h1>Hi, ##name##</h1><p>Click <a href="##token##">here</a> to recover your password</p>',
+          subject: 'Password recovery',
+          email,
+        },
+      }),
+    }),
+    resetPassword: builder.mutation<void, ResetPasswordArgs>({
+      query: body => ({
+        url: '/v1/auth/reset-password/{body.token}',
+        method: 'POST',
+        body: body.password,
+      }),
+    }),
   }),
 })
 
-export const { useGetDecksQuery, useMeQuery, useLoginMutation, useSignUpMutation, useLazyMeQuery,useLogoutMutation } =
-  authApi
+export const {
+  useGetDecksQuery,
+  useMeQuery,
+  useLoginMutation,
+  useSignUpMutation,
+  useLazyMeQuery,
+  useLogoutMutation,
+  useUpdateMeMutation,
+} = authApi

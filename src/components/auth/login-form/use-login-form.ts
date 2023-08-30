@@ -9,17 +9,22 @@ export const schema = z.object({
     .nonempty('Enter password')
     .min(3, 'Password must be at least 3 characters')
     .max(30, 'Password must be at most 30 characters'),
-  rememberMe: z.boolean().optional(),
+  rememberMe: z.boolean(),
 })
 
 export type Form = z.infer<typeof schema>
 
 export const useLoginForm = (
-  onSubmit: SubmitHandler<{ email: string; password: string; rememberMe?: boolean | undefined }>
+  onSubmit: SubmitHandler<{ email: string; password: string; rememberMe: boolean }>
 ) => {
   const { handleSubmit, ...rest } = useForm<Form>({
     resolver: zodResolver(schema),
     mode: 'onSubmit',
+    defaultValues: {
+      email: '',
+      password: '',
+      rememberMe: false,
+    },
   })
 
   return {

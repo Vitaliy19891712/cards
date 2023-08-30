@@ -14,6 +14,7 @@ export type InputPropsType = {
   onClearClick?: () => void
 } & ComponentProps<'input'>
 export const Input: React.FC<InputPropsType> = ({
+  value,
   iconEnd,
   iconStart,
   label,
@@ -34,7 +35,7 @@ export const Input: React.FC<InputPropsType> = ({
     button: clsx(s.button),
   }
 
-  const isShowClearButton = onClearClick && rest?.value?.length! > 0
+  const isShowClearButton = onClearClick && value?.length! > 0
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (onEnter && e.key === 'Enter') {
       onEnter(e)
@@ -51,6 +52,7 @@ export const Input: React.FC<InputPropsType> = ({
           type="text"
           // ref={ref}
           onKeyDown={handleKeyDown}
+          value={value}
           {...rest}
         />
         {!isShowClearButton && iconEnd}
@@ -58,7 +60,7 @@ export const Input: React.FC<InputPropsType> = ({
           <button className={classNames.button} onClick={onClearClick}>
             <Close />
           </button>
-        )}
+         )} 
       </div>
       {error && <div className={classNames.error}>{error}</div>}
     </div>

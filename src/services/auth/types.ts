@@ -10,7 +10,7 @@ export type User = {
 export type LogoutArgs = {
   email: string
   password: string
-  rememberMe?: boolean | undefined
+  rememberMe: boolean 
 }
 export type Pagination = {
   totalPages: number
@@ -29,4 +29,8 @@ export type SignUpArgs = {
   email: string
   subject?: string
   sendConfirmationEmail?: boolean
+}
+export type ResetPasswordArgs = {
+  token: string
+  password: string
 }
