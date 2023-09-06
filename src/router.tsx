@@ -15,12 +15,11 @@ import {
   PacksList,
 } from './pages'
 import { Header } from './components/ui/header'
-import { User, useLogoutMutation, useMeQuery } from './services'
-import { useEffect, useState } from 'react'
+import { useGetMeQuery, useLogoutMutation } from './services'
 
 const privateRoutes: RouteObject[] = [
   {
-    path: '/profile',
+    path: '/',
     element: <Profile />,
   },
 
@@ -47,14 +46,13 @@ const publicRoutes: RouteObject[] = [
     element: <CheckEmail />,
   },
   {
-    path: '/create-password',
+    path: '/create-password/:token',
     element: <CreateNewPassword />,
   },
   {
     path: '/forgot-password',
     element: <ForgotPassword />,
   },
-
   {
     path: '/register',
     element: <SignUp />,
@@ -66,7 +64,7 @@ const router = createBrowserRouter([
     element: <WithHeader />,
     children: [
       {
-        element:  <PrivateRoutes />,
+        element: <PrivateRoutes />,
         children: privateRoutes,
       },
 
@@ -76,10 +74,8 @@ const router = createBrowserRouter([
 ])
 
 function WithHeader() {
-  const { data, isSuccess } = useMeQuery()
+  const { data } = useGetMeQuery()
   const [logout] = useLogoutMutation()
-  console.log(isSuccess)
-  
   return (
     <>
       <Header isAuth={!!data} userInfo={data} onSignOut={logout}></Header>
@@ -89,11 +85,10 @@ function WithHeader() {
 }
 
 function PrivateRoutes() {
-  const { data, isSuccess, isLoading } = useMeQuery()
-  console.log(isSuccess)
+  const { data, isLoading } = useGetMeQuery()
 
-   if (isLoading) return <div>Loading...</div>
-  
+  if (isLoading) return <div>Loading...</div>
+
   return data ? <Outlet /> : <Navigate to="/login" />
 }
 

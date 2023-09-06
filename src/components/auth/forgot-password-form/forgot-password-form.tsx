@@ -6,8 +6,9 @@ import s from './forgot-password-form.module.scss'
 import { useRorgotPasswordForm } from './use-forgot-password-form'
 import { SubmitHandler } from 'react-hook-form'
 
+
 type ForgotPasswordFormPropsType = {
-  onSubmit: SubmitHandler<{ email: string }>
+  onSubmit: SubmitHandler< {email:string} >
 }
 
 export const ForgotPasswordForm: React.FC<ForgotPasswordFormPropsType> = ({ onSubmit }) => {
@@ -35,7 +36,7 @@ export const ForgotPasswordForm: React.FC<ForgotPasswordFormPropsType> = ({ onSu
       <Typography variant={'body2'} className={s.haveAccount}>
         Did you remember your password?
       </Typography>
-      <Typography as={'a'} variant={'h3'} className={s.signIn} href={'http://www.google.ru'}>
+      <Typography as={'a'} variant={'h3'} className={s.signIn} href={'/login'}>
         Try logging in
       </Typography>
     </Card>

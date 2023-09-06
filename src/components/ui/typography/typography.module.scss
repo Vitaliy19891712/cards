@@ -24,6 +24,7 @@
 
 .body1 {
   @include typography(var(--font-weight-regular), var(--font-size-m), var(--line-height-m));
+
 }
 
 .subtitle1 {
@@ -63,4 +64,10 @@
 
 a {
   color: var(--color-info-500);
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
 }

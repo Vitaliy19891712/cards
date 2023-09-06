@@ -5,7 +5,7 @@ import { Typography } from '../../ui/typography'
 export type Sort = {
   key: string
   direction: 'asc' | 'desc'
-} | null
+} | undefined
 export type Column = {
   key: string
   title: string
@@ -35,7 +35,7 @@ export const DecksTableHeader: React.FC<TableHeaderPropsType> = ({ columns, onSo
         direction: 'desc',
       })
     }
-    onSort(null)
+    onSort(undefined)
   }
   return (
     <thead>

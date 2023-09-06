@@ -1,17 +1,18 @@
 import { ComponentPropsWithoutRef } from 'react'
-import { DecksTableRow, Item } from '.'
+import { DecksTableRow,  } from '.'
+import { Deck, Paginated } from '../../../services'
 
 type DecksTableBodyPropsType = Omit<
   {
-    data: Array<Item>
+    data: Paginated<Deck>
   } & ComponentPropsWithoutRef<'tbody'>,
   'children'
 >
 export const DecksTableBody: React.FC<DecksTableBodyPropsType> = ({ data }) => {
   return (
     <tbody>
-      {data.map(item => (
-        <DecksTableRow key={item.title} item={item}></DecksTableRow>
+      {data.items.map(item => (
+        <DecksTableRow key={item.id} item={item}></DecksTableRow>
       ))}
     </tbody>
   )

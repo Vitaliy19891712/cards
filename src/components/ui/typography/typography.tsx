@@ -53,7 +53,7 @@ export const Typography = <T extends ElementType = 'span'>(
     ...style,
   }
   return (
-    <Component className={`${s[variant]} ${className}`} style={styles} {...rest}>
+    <Component className={`${s[variant]} ${className} `} style={styles} {...rest}>
       {children}
     </Component>
   )

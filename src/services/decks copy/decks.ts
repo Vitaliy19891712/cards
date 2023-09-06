@@ -7,7 +7,7 @@ import {
   GetRandomCards,
   Paginated,
   SaveGradeCard,
-} from '.'
+} from '..'
 import { baseApi } from '../baseApi'
 import { Card } from '../cards'
 
@@ -73,7 +73,13 @@ export const decksApi = baseApi.injectEndpoints({
       query: body => ({
         url: `v1/decks/${body.id}/cards`,
         method: 'Post',
-        body,
+        body: {
+          question: body.question,
+          answer: body.answer,
+          currentPage: body.currentPage,
+          itemsPerPage: body.itemsPerPage,
+          orderBy: body.orderBy,
+        },
       }),
     }),
     getRandomCard: builder.query<Card, GetRandomCards>({

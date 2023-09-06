@@ -9,7 +9,7 @@ export const authApi = baseApi.injectEndpoints({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['Me'],
+      invalidatesTags: ['GetMe'],
       // transformErrorResponse(baseQueryReturnValue, meta, arg) {},
     }),
     logout: builder.mutation<void, void>({
@@ -17,65 +17,92 @@ export const authApi = baseApi.injectEndpoints({
         url: 'v1/auth/logout',
         method: 'POST',
       }),
-      invalidatesTags: ['Me'],
+      invalidatesTags: ['GetMe'],
       // transformErrorResponse(baseQueryReturnValue, meta, arg) {},
     }),
     signUp: builder.mutation<User, SignUpArgs>({
-      query: (body: { email: any; password: any }) => ({
+      query: body => ({
         url: '/v1/auth/sign-up',
         method: 'POST',
         body: {
           email: body.email,
           password: body.password,
-          html: '<b>Hello, ##name##!</b><br/>Please confirm your email by clicking on the link below:<br/><a href="http://localhost:3000/confirm-email/##token##">Confirm email</a>. If it doesn\'t work, copy and paste the following link in your browser:<br/>http://localhost:3000/confirm-email/##token##',
+          html: `<b>Hello, ##name##!</b><br/>Please confirm your email by clicking on the link below:<br/><a href="http://localhost:5173/confirm-email/##token##">Confirm email</a>. If it doesn\'t work, copy and paste the following link in your browser:<br/>http://localhost:5173/confirm-email/##token##`,
           subject: 'Confirmation Email',
           sendConfirmationEmail: true,
         },
       }),
     }),
-    getDecks: builder.query<any, void>({
-      query: () => `v1/decks`,
-    }),
-    me: builder.query<User, void>({
+    getMe: builder.query<User, void>({
       query: () => ({
         url: 'v1/auth/me',
       }),
-      providesTags: ['Me'],
+      providesTags: ['GetMe'],
     }),
-    updateMe: builder.mutation<User, Pick<User, 'avatar' | 'name' | 'email'>>({
+    updateMe: builder.mutation<User, Pick<User, 'name'>>({
       query: body => ({
         url: '/v1/auth/me',
         method: 'PATCH',
         body,
       }),
+      invalidatesTags: ['GetMe'],
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        const patchResult = dispatch(
+          authApi.util.updateQueryData('getMe', undefined, user => {
+            user.name = arg.name
+          })
+        )
+        try {
+          await queryFulfilled
+        } catch {
+          patchResult.undo()
+        }
+      },
     }),
-    recoverPassword: builder.mutation<void, Pick<SignUpArgs, 'html' | 'email' | 'password'>>({
+    recoverPassword: builder.mutation<void, Pick<SignUpArgs, 'email'>>({
       query: email => ({
         url: '/v1/auth/recover-password',
         method: 'POST',
         body: {
-          html: '<h1>Hi, ##name##</h1><p>Click <a href="##token##">here</a> to recover your password</p>',
+          html: `<h1>Hi, ##name##</h1><p>Click <a href="http://localhost:5173/create-password/##token##">here</a> to recover your password</p>`,
           subject: 'Password recovery',
-          email,
+          email: email.email,
         },
       }),
     }),
     resetPassword: builder.mutation<void, ResetPasswordArgs>({
       query: body => ({
-        url: '/v1/auth/reset-password/{body.token}',
+        url: `/v1/auth/reset-password/${body.token}`,
         method: 'POST',
-        body: body.password,
+        body: { password: body.password },
+      }),
+    }),
+    verifyEmail: builder.mutation<void, { code: string }>({
+      query: body => ({
+        url: 'v1/auth/verify-email',
+        method: 'POST',
+        body,
+      }),
+    }),
+    resendVerifyEmail: builder.mutation<void, { userId: string }>({
+      query: body => ({
+        url: 'v1/auth/resend-verification-email',
+        method: 'POST',
+        body,
       }),
     }),
   }),
 })
 
 export const {
-  useGetDecksQuery,
-  useMeQuery,
+  useGetMeQuery,
+  useLazyGetMeQuery,
   useLoginMutation,
   useSignUpMutation,
-  useLazyMeQuery,
   useLogoutMutation,
   useUpdateMeMutation,
+  useRecoverPasswordMutation,
+  useResetPasswordMutation,
+  useVerifyEmailMutation,
+  useResendVerifyEmailMutation,
 } = authApi

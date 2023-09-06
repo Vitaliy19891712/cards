@@ -1,10 +1,9 @@
 import s from './header.module.scss'
-import { LogoHeader } from '../../../assets/icons'
+import { ButtonArrow, LogoHeader } from '../../../assets/icons'
 import { Button } from '../button'
 import { ComponentProps } from 'react'
 import avatarLogo from './../../../assets/images/avatar.png'
 import { Typography } from '../typography'
-import { Outlet } from 'react-router-dom'
 import { Dropdownmenu } from '../dropDownMenu'
 import { User } from '../../../services'
 
@@ -14,7 +13,7 @@ export type HeaderProps = {
   onSignOut?: () => void
 } & ComponentProps<'header'>
 
-export const Header: React.FC<HeaderProps> = ({ isAuth = false, userInfo, ...rest }) => {
+export const Header: React.FC<HeaderProps> = ({ isAuth = false, userInfo, onSignOut, ...rest }) => {
   const className = {
     header: s.header,
     container: s.container,
@@ -22,6 +21,7 @@ export const Header: React.FC<HeaderProps> = ({ isAuth = false, userInfo, ...res
     avatarWrapper: s.avatarWrapper,
     name: s.name,
     avatar: s.avatar,
+    items: s.item,
   }
 
   let avatar = userInfo?.avatar ? userInfo.avatar : avatarLogo
@@ -46,8 +46,18 @@ export const Header: React.FC<HeaderProps> = ({ isAuth = false, userInfo, ...res
             items={[
               <div>11111111111111111111</div>,
               <div>222222222222222222222</div>,
-              <div>3</div>,
-              <div>4</div>,
+              <div className={className.items}>
+                <Typography as={'a'} variant={'caption'} href={'/'}>
+                  <ButtonArrow />
+                  My Profile
+                </Typography>
+              </div>,
+              <div className={className.items}>
+                <Typography as={'button'} variant={'caption'} onClick={onSignOut}>
+                  <ButtonArrow />
+                  Sign Out
+                </Typography>
+              </div>,
             ]}
             trigger={
               <div className={className.avatarWrapper}>
@@ -60,7 +70,6 @@ export const Header: React.FC<HeaderProps> = ({ isAuth = false, userInfo, ...res
           ></Dropdownmenu>
         )}
       </div>
-      <Outlet></Outlet>
     </header>
   )
 }

@@ -1,22 +1,20 @@
+import { useNavigate } from 'react-router-dom'
 import { LoginForm } from '../components/auth/login-form'
-import { useLazyMeQuery, useLoginMutation, useLogoutMutation, useMeQuery } from '../services'
+import { useLoginMutation } from '../services'
 
 export const Login = () => {
   const [login] = useLoginMutation()
-  const [trigger] = useLazyMeQuery()
-  const [logout] = useLogoutMutation()
-
-
+  const navigate = useNavigate()
+  const loginHandler = async (body: { email: string; password: string; rememberMe: boolean }) => {
+    try {
+      await login(body)
+      navigate('/packs')
+    } catch (error) {}
+  }
 
   return (
     <>
-      <LoginForm onSubmit={login}></LoginForm>
-      <button onClick={e => trigger()} style={{ color: 'black' }}>
-        me
-      </button>
-      <button onClick={e => logout()} style={{ color: 'black' }}>
-        logout
-      </button>
+      <LoginForm onSubmit={loginHandler}></LoginForm>
     </>
   )
 }

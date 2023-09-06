@@ -12,7 +12,7 @@ const range = (start: number, end: number) => {
 export const DOTS = '...'
 
 type UsePaginationParamType = {
-  totalCount: number
+  totalCount: number 
   siblingCount?: number
   currentPage: number
   pageSize: number

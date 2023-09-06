@@ -15,6 +15,9 @@ export const useProfileForm = (onSubmit: SubmitHandler<{ name: string }>) => {
   const { handleSubmit, ...rest } = useForm<Form>({
     resolver: zodResolver(schema),
     mode: 'onSubmit',
+    defaultValues: {
+      name: '',
+    },
   })
 
   return {

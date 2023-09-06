@@ -4,7 +4,7 @@ import { Typography } from '../../ui/typography'
 import s from './profile-form.module.scss'
 import { ButtonArrow, EditIcon } from '../../../assets/icons'
 import avatarLogo from './../../../assets/images/avatar.png'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { ControlledTextField } from '../../ui/controlled'
 import { useProfileForm } from './use-profile-form'
 import { SubmitHandler } from 'react-hook-form'
@@ -12,8 +12,8 @@ import { SubmitHandler } from 'react-hook-form'
 type EditProfilePropsType = {
   handlerLoadAvatar: () => void
   handlerLogout: () => void
-  email: string
-  name: string
+  email?: string
+  name?: string
   onSubmit: SubmitHandler<{ name: string }>
   photo?: string
 }
@@ -40,7 +40,8 @@ export const ProfileForm: React.FC<EditProfilePropsType> = ({
     setIsEdit(true)
   }
 
-  const saveChangeHandler = async () => {
+  const saveChangeHandler = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     try {
       await handleSubmit()
       setIsEdit(false)

@@ -13,7 +13,6 @@ type RegisterFormPropsType = {
 export const RegisterForm: React.FC<RegisterFormPropsType> = ({ onSubmit }) => {
   const { handleSubmit, control } = useRegisterForm(onSubmit)
 
-  
   return (
     <Card className={s.card}>
       <Typography variant={'large'} as={'h1'}>
@@ -39,13 +38,13 @@ export const RegisterForm: React.FC<RegisterFormPropsType> = ({ onSubmit }) => {
           control={control}
         ></ControlledTextField>
         <Button fullWidth className={s.button} type="submit">
-          <Typography variant={"subtitle2"}>Sign Up</Typography>
+          <Typography variant={'subtitle2'}>Sign Up</Typography>
         </Button>
       </form>
       <Typography variant={'body2'} className={s.haveAccount}>
         Already have an account?
       </Typography>
-      <Typography as={'a'} variant={'h3'} className={s.signIn} href={'http://www.google.ru'}>
+      <Typography as={'a'} variant={'h3'} className={s.signIn} href={'/login'}>
         Sugn In
       </Typography>
     </Card>

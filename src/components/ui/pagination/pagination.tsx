@@ -32,11 +32,6 @@ export const Pagination: React.FC<PaginationPropsType> = ({
     onPageChange,
   })
 
-  const showPerPageSelect = !!perPage && !!perPageOptions && !!onPerPageChange
-  if (currentPage === 0 || paginationRange.length < 2) {
-    return null
-  }
-
   const handleNextPageClicked = useCallback(() => {
     onPageChange(currentPage + 1)
   }, [currentPage, onPageChange])
@@ -44,6 +39,11 @@ export const Pagination: React.FC<PaginationPropsType> = ({
   const handlePreviousPageClicked = useCallback(() => {
     onPageChange(currentPage - 1)
   }, [currentPage, onPageChange])
+
+  const showPerPageSelect = !!perPage && !!perPageOptions && !!onPerPageChange
+  if (currentPage === 0 || paginationRange.length < 2) {
+    return null
+  }
   return (
     <div className={s.pagination}>
       {/* Left navigation arrow */}

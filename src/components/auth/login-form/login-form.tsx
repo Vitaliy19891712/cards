@@ -8,7 +8,7 @@ import { useLoginForm } from './use-login-form'
 import { SubmitHandler } from 'react-hook-form'
 
 type LoginFormPropsType = {
-  onSubmit: SubmitHandler<{ email: string; password: string; rememberMe: boolean}>
+  onSubmit: SubmitHandler<{ email: string; password: string; rememberMe: boolean }>
 }
 
 export const LoginForm: React.FC<LoginFormPropsType> = ({ onSubmit }) => {
@@ -38,7 +38,7 @@ export const LoginForm: React.FC<LoginFormPropsType> = ({ onSubmit }) => {
           name="rememberMe"
           control={control}
         ></ControlledCheckbox>
-        <Typography as={'a'} variant={'body2'} className={s.forgot}>
+        <Typography as={'a'} variant={'body2'} className={s.forgot} href={'/forgot-password'}>
           Forgot password
         </Typography>
         <Button fullWidth className={s.button} type="submit">
@@ -48,7 +48,7 @@ export const LoginForm: React.FC<LoginFormPropsType> = ({ onSubmit }) => {
       <Typography variant={'body2'} className={s.haveAccount}>
         Don't have an account?
       </Typography>
-      <Typography as={'a'} variant={'h3'} className={s.signUp} href={'http://www.google.ru'}>
+      <Typography as={'a'} variant={'h3'} className={s.signUp} href={'/register'}>
         Sugn Up
       </Typography>
     </Card>
