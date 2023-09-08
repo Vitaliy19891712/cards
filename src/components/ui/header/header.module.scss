@@ -1,6 +1,6 @@
 .button {
   display: inline;
-  
+
 }
 
 .header {
@@ -16,12 +16,31 @@
     justify-content: space-between;
     align-items: center;
 
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px;
+    }
+
+    .string {
+      display: flex;
+      padding-left: 0;
+      gap: 6px
+    }
+
     .avatarWrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 14px;
       height: 100%;
+      cursor: pointer;
     }
 
     .name {
@@ -31,6 +50,11 @@
 
     .avatar {
       max-height: 36px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
     }
   }
 }

@@ -4,6 +4,7 @@ import {
   RouteObject,
   Outlet,
   Navigate,
+  useNavigate,
 } from 'react-router-dom'
 import {
   CheckEmail,
@@ -27,10 +28,10 @@ const privateRoutes: RouteObject[] = [
     path: '/packs',
     element: <PacksList />,
   },
-  // {
-  //   path: 'cards/:id',
-  //   element: <CardsList />,
-  // },
+  {
+    path: 'cards/:id',
+    element: <div>"cards"</div>,
+  },
   // {
   //   path: 'learn/:id/',
   //   element: <LearnPage />,
@@ -76,9 +77,14 @@ const router = createBrowserRouter([
 function WithHeader() {
   const { data } = useGetMeQuery()
   const [logout] = useLogoutMutation()
+  const navigate = useNavigate()
+  const onSignOutHandler = () => {
+    logout()
+    navigate('/login')
+  }
   return (
     <>
-      <Header isAuth={!!data} userInfo={data} onSignOut={logout}></Header>
+      <Header isAuth={!!data} userInfo={data} onSignOut={onSignOutHandler}></Header>
       <Outlet />
     </>
   )

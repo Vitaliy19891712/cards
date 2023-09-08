@@ -1,5 +1,5 @@
 import s from './header.module.scss'
-import { ButtonArrow, LogoHeader } from '../../../assets/icons'
+import { ButtonArrow, LogoHeader, Person } from '../../../assets/icons'
 import { Button } from '../button'
 import { ComponentProps } from 'react'
 import avatarLogo from './../../../assets/images/avatar.png'
@@ -22,6 +22,7 @@ export const Header: React.FC<HeaderProps> = ({ isAuth = false, userInfo, onSign
     name: s.name,
     avatar: s.avatar,
     items: s.item,
+    string: s.string,
   }
 
   let avatar = userInfo?.avatar ? userInfo.avatar : avatarLogo
@@ -44,16 +45,26 @@ export const Header: React.FC<HeaderProps> = ({ isAuth = false, userInfo, onSign
           <Dropdownmenu
             onChange={() => {}}
             items={[
-              <div>11111111111111111111</div>,
-              <div>222222222222222222222</div>,
               <div className={className.items}>
-                <Typography as={'a'} variant={'caption'} href={'/'}>
-                  <ButtonArrow />
+                <img className={className.avatar} src={avatar} alt="avatar" />
+                <div className={s.text}>
+                  <Typography variant={'subtitle2'}>{userInfo?.name}</Typography>
+                  <Typography variant={'caption'} style={{color:"#808080"}}>{userInfo?.email}</Typography>
+                </div>
+              </div>,
+              <div className={className.items}>
+                <Typography as={'a'} variant={'caption'} href={'/'} className={className.string}>
+                  <Person />
                   My Profile
                 </Typography>
               </div>,
               <div className={className.items}>
-                <Typography as={'button'} variant={'caption'} onClick={onSignOut}>
+                <Typography
+                  as={'button'}
+                  variant={'caption'}
+                  onClick={onSignOut}
+                  className={className.string}
+                >
                   <ButtonArrow />
                   Sign Out
                 </Typography>

@@ -18,6 +18,19 @@ export const authApi = baseApi.injectEndpoints({
         method: 'POST',
       }),
       invalidatesTags: ['GetMe'],
+
+      // async onQueryStarted(_, { dispatch, queryFulfilled }) {
+      //   const patchResult = dispatch(
+      //     authApi.util.updateQueryData('getMe', undefined, user => {
+      //       user = undefined
+      //     })
+      //   )
+      //   try {
+      //     await queryFulfilled
+      //   } catch {
+      //     patchResult.undo()
+      //   }
+      // },
       // transformErrorResponse(baseQueryReturnValue, meta, arg) {},
     }),
     signUp: builder.mutation<User, SignUpArgs>({
