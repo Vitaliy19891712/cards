@@ -18,7 +18,11 @@ export const decksApi = baseApi.injectEndpoints({
       providesTags: ['GetDecks'],
     }),
     createDeck: builder.mutation<Deck, CreateDeck>({
-      query: body => ({ url: `v1/decks`, method: 'POST', body }),
+      query: body => ({
+        url: `v1/decks`,
+        method: 'POST',
+        body,
+      }),
       invalidatesTags: ['GetDecks'],
       // async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 
@@ -48,14 +52,12 @@ export const decksApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['GetDecksById'],
     }),
-    deleteDeck: builder.mutation<
-      Omit<Deck, 'authot' | 'isDeleted' | 'isBlocked'>,
-      Pick<Deck, 'id'>
-    >({
+    deleteDeck: builder.mutation<Omit<Deck, 'author' | 'isDeleted' | 'isBlocked'>, string>({
       query: id => ({
         url: `v1/decks/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['GetDecks'],
     }),
     getCards: builder.query<Omit<Paginated<Card>, 'maxCardsCount'>, GetCards>({
       query: params => ({

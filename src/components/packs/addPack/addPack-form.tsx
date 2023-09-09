@@ -1,9 +1,9 @@
 import { SubmitHandler } from 'react-hook-form'
-import { Button } from '../ui/button'
-import s from './addCards-form.module.scss'
-import { ControlledTextField, ControlledCheckbox } from '../ui/controlled'
-import { Typography } from '../ui/typography'
+import s from './addPack-form.module.scss'
 import { useAddPacksForm } from './use-addCards-form'
+import { ControlledCheckbox, ControlledTextField } from '../../ui/controlled'
+import { Button } from '../../ui/button'
+import { Typography } from '../../ui/typography'
 
 type addPacksFormPropsType = {
   onSubmit: SubmitHandler<{ name: string; cover?: string; isPrivate: boolean }>
@@ -29,10 +29,10 @@ export const AddPacksForm: React.FC<addPacksFormPropsType> = ({ onSubmit, closeM
           control={control}
         ></ControlledCheckbox>
         <div className={s.flex}>
-          <Button className={s.button} onClick={closeModal} variant={'secondary'}>
+          <Button onClick={closeModal} variant={'secondary'}>
             <Typography variant={'subtitle2'}>Cansel</Typography>
           </Button>
-          <Button className={s.button} type="submit" variant={'primary'}>
+          <Button type="submit" variant={'primary'}>
             <Typography variant={'subtitle2'}>Add New Pack</Typography>
           </Button>
         </div>

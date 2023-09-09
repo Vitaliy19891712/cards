@@ -6,12 +6,17 @@ import { SliderCommon } from '../../components/ui/slider'
 import { TabSwitcher } from '../../components/ui/tabswitcher'
 import s from './packs-list.module.scss'
 import { Typography } from '../../components/ui/typography'
-import { useCreateDeckMutation, useGetDecksQuery, useGetMeQuery } from '../../services'
+import {
+  useCreateDeckMutation,
+  useDeleteDeckMutation,
+  useGetDecksQuery,
+  useGetMeQuery,
+} from '../../services'
 import { Pagination } from '../../components/ui/pagination'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useDebounce } from '../../assets'
 import { Modal } from '../../components/ui/modal'
-import { AddPacksForm } from '../../components/packs'
+import { AddPacksForm } from '../../components/packs/addPack'
 
 let isFirstRender = true
 
@@ -61,6 +66,23 @@ export const PacksList = ({}) => {
   })
 
   const [createDeck] = useCreateDeckMutation()
+  const [deleteDeck] = useDeleteDeckMutation()
+
+  const createDeckHandler = ({
+    name,
+    isPrivate,
+    cover,
+  }: {
+    name: string
+    cover?: string | undefined
+    isPrivate: boolean
+  }) => {
+    createDeck({ name, isPrivate, cover })
+      .unwrap()
+      .then(() => {
+        setIsModal(false)
+      })
+  }
 
   const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.currentTarget.value)
@@ -104,7 +126,10 @@ export const PacksList = ({}) => {
             onClose={() => setIsModal(false)}
             // showCloseButton={false}
           >
-            <AddPacksForm onSubmit={createDeck} closeModal={() => setIsModal(false)}></AddPacksForm>
+            <AddPacksForm
+              onSubmit={createDeckHandler}
+              closeModal={() => setIsModal(false)}
+            ></AddPacksForm>
           </Modal>
         </div>
         {isSuccess && (
@@ -139,7 +164,11 @@ export const PacksList = ({}) => {
             </div>
             <DecksTable>
               <DecksTableHeader columns={columns} onSort={setSort} sort={sort}></DecksTableHeader>
-              <DecksTableBody data={data} userId={user?.id}></DecksTableBody>
+              <DecksTableBody
+                data={data}
+                userId={user?.id}
+                deleteDeck={id => deleteDeck(id)}
+              ></DecksTableBody>
             </DecksTable>
             <div className={s.pagination}>
               <Pagination
