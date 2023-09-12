@@ -1,0 +1,24 @@
+.form {
+  width: 100%;
+
+
+  .textField {
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  .textField:not(:last-of-type) {
+    margin-bottom: 24px;
+  }
+
+  .checkbox {
+    margin-left: -6px;
+  }
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+}

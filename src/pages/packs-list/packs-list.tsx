@@ -11,6 +11,7 @@ import {
   useDeleteDeckMutation,
   useGetDecksQuery,
   useGetMeQuery,
+  useUpdateDeckMutation,
 } from '../../services'
 import { Pagination } from '../../components/ui/pagination'
 import { ChangeEvent, useEffect, useState } from 'react'
@@ -57,7 +58,7 @@ export const PacksList = ({}) => {
 
   const { data, isSuccess } = useGetDecksQuery({
     currentPage: currentPage,
-    itemsPerPage: String(itemsPerPage),
+    itemsPerPage: itemsPerPage,
     name: debouncedSearchText,
     minCardsCount: String(debouncedMinMaxCards[0]),
     maxCardsCount: String(debouncedMinMaxCards[1]),
@@ -67,7 +68,8 @@ export const PacksList = ({}) => {
 
   const [createDeck] = useCreateDeckMutation()
   const [deleteDeck] = useDeleteDeckMutation()
-
+  const [updateDeck] = useUpdateDeckMutation()
+  
   const createDeckHandler = ({
     name,
     isPrivate,
@@ -165,6 +167,7 @@ export const PacksList = ({}) => {
             <DecksTable>
               <DecksTableHeader columns={columns} onSort={setSort} sort={sort}></DecksTableHeader>
               <DecksTableBody
+                updateDeck={updateDeck}
                 data={data}
                 userId={user?.id}
                 deleteDeck={id => deleteDeck(id)}

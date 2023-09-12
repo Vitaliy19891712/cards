@@ -1,20 +1,5 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  RouteObject,
-  Outlet,
-  Navigate,
-  useNavigate,
-} from 'react-router-dom'
-import {
-  CheckEmail,
-  ForgotPassword,
-  Login,
-  SignUp,
-  CreateNewPassword,
-  Profile,
-  PacksList,
-} from './pages'
+import { createBrowserRouter, RouterProvider, RouteObject, Outlet, Navigate, useNavigate } from 'react-router-dom'
+import { CheckEmail, ForgotPassword, Login, SignUp, CreateNewPassword, Profile, PacksList, CardsList } from './pages'
 import { Header } from './components/ui/header'
 import { useGetMeQuery, useLogoutMutation } from './services'
 
@@ -28,13 +13,14 @@ const privateRoutes: RouteObject[] = [
     path: '/packs',
     element: <PacksList />,
   },
+
   {
-    path: 'cards/:id',
-    element: <div>"cards"</div>,
+    path: '/packs/:id/cards',
+    element: <CardsList />,
   },
   // {
-  //   path: 'learn/:id/',
-  //   element: <LearnPage />,
+  //   path: '/packs/learn/:id',
+  //   element: <Learn/>,
   // },
 ]
 const publicRoutes: RouteObject[] = [

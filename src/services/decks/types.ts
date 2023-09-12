@@ -13,7 +13,7 @@ export type DeckAuthor = Pick<User, 'id' | 'name'>
 
 export type Deck = {
   author: DeckAuthor
-  id: string
+  id?: string
   userId: string
   name: string
   isPrivate?: boolean
@@ -47,14 +47,14 @@ export type GetDecsParams = {
   authorId?: string
   orderBy?: string
   currentPage?: number
-  itemsPerPage?: string
+  itemsPerPage?: number
 }
 export type CreateDeck = Pick<Deck, 'cover' | 'name' | 'isPrivate'>
 
 export type DeckID = Pick<Deck, 'cover' | 'name' | 'isPrivate'>
 
 export type GetCards = {
-  id: string
+  id?: string
   question?: string
   answer?: string
   orderBy?: string
@@ -70,9 +70,7 @@ export type SaveGradeCard = {
   cardId: string
   grade: 1 | 2 | 3 | 4 | 5
 }
-export type CreateCard = GetCards & {
+export type CreateCard = Pick<GetCards, 'id'> & {
   question: string
   answer: string
 }
-
-

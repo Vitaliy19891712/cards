@@ -15,10 +15,11 @@ export type Card = {
 }
 
 export type UpdateCardParams = {
+  id:string
   questionImg?: string
   answerImg?: string
-  question?: string
-  answer?: string
+  question: string
+  answer: string
   questionVideo?: string
   answerVideo?: string
 }

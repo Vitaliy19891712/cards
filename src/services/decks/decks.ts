@@ -1,13 +1,4 @@
-import {
-  CreateCard,
-  CreateDeck,
-  Deck,
-  GetCards,
-  GetDecsParams,
-  GetRandomCards,
-  Paginated,
-  SaveGradeCard,
-} from '.'
+import { CreateCard, CreateDeck, Deck, GetCards, GetDecsParams, GetRandomCards, Paginated, SaveGradeCard } from '.'
 import { baseApi } from '../baseApi'
 import { Card } from '../cards'
 
@@ -40,7 +31,7 @@ export const decksApi = baseApi.injectEndpoints({
       //   }
       // },
     }),
-    getDeckById: builder.query<Deck, Pick<Deck, 'id'>>({
+    getDeckById: builder.query<Deck, Deck['id']>({
       query: id => `v1/decks/${id}`,
       providesTags: ['GetDecksById'],
     }),
@@ -50,7 +41,7 @@ export const decksApi = baseApi.injectEndpoints({
         method: 'PATCH',
         body: { cover: body.cover, isPrivate: body.isPrivate, name: body.name },
       }),
-      invalidatesTags: ['GetDecksById'],
+      invalidatesTags: ['GetDecks'],
     }),
     deleteDeck: builder.mutation<Omit<Deck, 'author' | 'isDeleted' | 'isBlocked'>, string>({
       query: id => ({
@@ -70,13 +61,18 @@ export const decksApi = baseApi.injectEndpoints({
           orderBy: params.orderBy,
         },
       }),
+      providesTags: ['GetCards'],
     }),
     createCard: builder.mutation<Card, CreateCard>({
       query: body => ({
         url: `v1/decks/${body.id}/cards`,
         method: 'Post',
-        body,
+        body: {
+          question: body.question,
+          answer: body.answer,
+        },
       }),
+      invalidatesTags: ['GetCards'],
     }),
     getRandomCard: builder.query<Card, GetRandomCards>({
       query: params => ({

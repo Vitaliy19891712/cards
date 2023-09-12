@@ -1,6 +1,6 @@
 import { SubmitHandler } from 'react-hook-form'
-import s from './addPack-form.module.scss'
-import { useAddPackForm } from './use-addPack-form'
+import s from './updatePack-form.module.scss'
+import { useUpdatePackForm } from './use-updatePack-form'
 import { ControlledCheckbox, ControlledTextField } from '../../ui/controlled'
 import { Button } from '../../ui/button'
 import { Typography } from '../../ui/typography'
@@ -10,8 +10,8 @@ type addPacksFormPropsType = {
   closeModal: () => void
 }
 
-export const AddPacksForm: React.FC<addPacksFormPropsType> = ({ onSubmit, closeModal }) => {
-  const { handleSubmit, control } = useAddPackForm(onSubmit)
+export const UpdatePackForm: React.FC<addPacksFormPropsType> = ({ onSubmit, closeModal }) => {
+  const { handleSubmit, control } = useUpdatePackForm(onSubmit)
 
   return (
     <>
@@ -33,7 +33,7 @@ export const AddPacksForm: React.FC<addPacksFormPropsType> = ({ onSubmit, closeM
             <Typography variant={'subtitle2'}>Cancel</Typography>
           </Button>
           <Button type="submit" variant={'primary'}>
-            <Typography variant={'subtitle2'}>Add New Pack</Typography>
+            <Typography variant={'subtitle2'}>Save Changes</Typography>
           </Button>
         </div>
       </form>

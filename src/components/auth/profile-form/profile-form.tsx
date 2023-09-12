@@ -81,7 +81,7 @@ export const ProfileForm: React.FC<EditProfilePropsType> = ({
             <Typography variant={'h1'} className={s.name}>
               {name}
             </Typography>
-            <EditIcon onClick={onClickHandler} />
+            <EditIcon onClick={onClickHandler} className={s.icon} />
           </div>
           <Typography variant={'body2'} className={s.text}>
             {email}

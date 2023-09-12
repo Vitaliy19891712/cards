@@ -1,19 +1,16 @@
 import { Button } from '../../ui/button'
 import { Typography } from '../../ui/typography'
-import s from './deletePack-form.module.scss'
+import s from './deleteCard-form.module.scss'
 
-type addPacksFormPropsType = {
+type DeleteCardFormPropsType = {
   onSubmit: () => void
   closeModal: () => void
 }
 
-export const DeletePackForm: React.FC<addPacksFormPropsType> = ({ onSubmit, closeModal }) => {
+export const DeleteCardForm: React.FC<DeleteCardFormPropsType> = ({ onSubmit, closeModal }) => {
   return (
     <>
-      <div>
-        'Do you really want to remove this pack?
-        <br /> All cards will be deleted.'
-      </div>
+      <div>`Do you really want to remove this card?`</div>
       <div className={s.flex}>
         <Button onClick={closeModal} variant={'secondary'}>
           <Typography variant={'subtitle2'}>Cancel</Typography>
