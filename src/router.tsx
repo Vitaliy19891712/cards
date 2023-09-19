@@ -2,7 +2,10 @@ import { createBrowserRouter, RouterProvider, RouteObject, Outlet, Navigate, use
 import { CheckEmail, ForgotPassword, Login, SignUp, CreateNewPassword, Profile, PacksList, CardsList } from './pages'
 import { Header } from './components/ui/header'
 import { useGetMeQuery, useLogoutMutation } from './services'
-
+import { LearnRandomCards } from './pages/learnRandomCards'
+import { LearnCard } from './pages/learnCard'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 const privateRoutes: RouteObject[] = [
   {
     path: '/',
@@ -18,10 +21,14 @@ const privateRoutes: RouteObject[] = [
     path: '/packs/:id/cards',
     element: <CardsList />,
   },
-  // {
-  //   path: '/packs/learn/:id',
-  //   element: <Learn/>,
-  // },
+  {
+    path: '/packs/:id/learn',
+    element: <LearnRandomCards />,
+  },
+  {
+    path: '/packs/:id/card',
+    element: <LearnCard />,
+  },
 ]
 const publicRoutes: RouteObject[] = [
   {
@@ -66,12 +73,16 @@ function WithHeader() {
   const navigate = useNavigate()
   const onSignOutHandler = () => {
     logout()
-    navigate('/login')
+      .unwrap()
+      .then(() => {
+        navigate('/login')
+      })
   }
   return (
     <>
-      <Header isAuth={!!data} userInfo={data} onSignOut={onSignOutHandler}></Header>
+      <Header userInfo={data} onSignOut={onSignOutHandler}></Header>
       <Outlet />
+      <ToastContainer />
     </>
   )
 }

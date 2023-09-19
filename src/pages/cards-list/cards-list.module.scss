@@ -3,10 +3,35 @@
     height: 100%;
     margin: 0 auto;
 
+    .back {
+      display: flex;
+      margin-top: 24px;
+      gap: 6px;
+      align-items: center;
+      text-decoration: none;
+    }
+
     .topLine {
       display: flex;
       justify-content: space-between;
       margin-top: 33px;
+      .name{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+    }
+
+    .secondLine {
+      margin-top: 69px;
+      margin-bottom: 30px;
+      text-align: center;
+      color: var(--color-dark-100);
+    }
+
+    .button {
+      display: flex;
+      justify-content: center;
     }
 
     .settingBar {

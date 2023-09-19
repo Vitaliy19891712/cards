@@ -6,18 +6,23 @@ export const cardsApi = baseApi.injectEndpoints({
     getCardById: builder.query<Card, Pick<Card, 'id'>>({
       query: params => `v1/cards/${params.id}`,
     }),
-    updateCard: builder.mutation<Card, UpdateCardParams & Pick<Card, 'id'>>({
+    updateCard: builder.mutation<Card, UpdateCardParams>({
       query: body => ({
         url: `v1/cards/${body.id}`,
         method: 'PATCH',
-        body,
+        body: {
+          question: body.question,
+          answer: body.answer,
+        },
       }),
+      invalidatesTags: ['GetCards'],
     }),
     deleteCard: builder.mutation<void, Pick<Card, 'id'>>({
       query: params => ({
         url: `v1/cards/${params.id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['GetCards'],
     }),
   }),
 })

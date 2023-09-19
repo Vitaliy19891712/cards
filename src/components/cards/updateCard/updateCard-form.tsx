@@ -1,7 +1,7 @@
 import { SubmitHandler } from 'react-hook-form'
 import s from './updateCard-form.module.scss'
 import { useUpdateCardForm } from './use-updateCard-form'
-import { ControlledCheckbox, ControlledTextField } from '../../ui/controlled'
+import {  ControlledTextField } from '../../ui/controlled'
 import { Button } from '../../ui/button'
 import { Typography } from '../../ui/typography'
 
@@ -22,7 +22,12 @@ export const UpdateCardForm: React.FC<UpdateCardFormPropsType> = ({ onSubmit, cl
           name="question"
           control={control}
         ></ControlledTextField>
-        <ControlledCheckbox className={s.checkbox} label="Answer" name="answer" control={control}></ControlledCheckbox>
+        <ControlledTextField
+          className={s.textField}
+          label="Answer"
+          name="answer"
+          control={control}
+        ></ControlledTextField>
         <div className={s.flex}>
           <Button onClick={closeModal} variant={'secondary'}>
             <Typography variant={'subtitle2'}>Cancel</Typography>

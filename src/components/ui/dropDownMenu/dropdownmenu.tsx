@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react'
 import s from './dropdownmenu.module.scss'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 type IProps = {
-  onChange: (open: boolean) => void
+  onChange?: (open: boolean) => void
   modal?: boolean
   children?: ReactNode
   items: Array<ReactNode>

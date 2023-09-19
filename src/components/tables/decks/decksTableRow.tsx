@@ -38,9 +38,11 @@ export const DecksTableRow: React.FC<DecksTableRowPropsType> = ({ item, userId, 
   const [isModalDelete, setIsModalDelete] = useState(false)
   const [isModalUpdate, setIsModalUpdate] = useState(false)
   const deletePackHandler = () => {
-    deleteDeck(item.id).then(() => {
-      setIsModalDelete(false)
-    })
+    if (item.id) {
+      deleteDeck(item.id).then(() => {
+        setIsModalDelete(false)
+      })
+    }
   }
   const updatePackHandler = ({ name, cover, isPrivate }: CreateDeck) => {
     updateDeck({ name, cover, isPrivate, id: item.id }).then(() => {
@@ -55,7 +57,7 @@ export const DecksTableRow: React.FC<DecksTableRowPropsType> = ({ item, userId, 
       {userId === item.author.id && (
         <>
           <Delete onClick={() => setIsModalDelete(true)} className={s.icon} />
-          <Modal title={'Add New Pack'} open={isModalDelete} onClose={() => setIsModalDelete(false)}>
+          <Modal title={'Delete Pack'} open={isModalDelete} onClose={() => setIsModalDelete(false)}>
             <DeletePackForm closeModal={() => setIsModalDelete(false)} onSubmit={deletePackHandler} />
           </Modal>
         </>

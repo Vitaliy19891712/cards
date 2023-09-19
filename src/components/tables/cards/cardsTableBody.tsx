@@ -12,6 +12,11 @@ type CardsTableBodyPropsType = Omit<
     updateCard: ({
       answer,
       question,
+      questionImg,
+      answerImg,
+      questionVideo,
+      answerVideo,
+      id,
     }: UpdateCardParams) => Promise<{ data: Card } | { error: FetchBaseQueryError | SerializedError }>
     data: Omit<Paginated<Card>, 'maxCardsCount'>
   } & ComponentPropsWithoutRef<'tbody'>,

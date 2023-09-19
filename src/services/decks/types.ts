@@ -1,3 +1,4 @@
+
 import { User } from '..'
 
 export type GetDeckParams = {
@@ -63,7 +64,7 @@ export type GetCards = {
 }
 
 export type GetRandomCards = {
-  id: string
+  id?: string
   previousCardId?: string
 }
 export type SaveGradeCard = {

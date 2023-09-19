@@ -1,0 +1,45 @@
+.button {
+  display: inline;
+}
+
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.string {
+  display: flex;
+  padding-left: 0;
+  gap: 6px
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.name {
+  border-bottom: 1px dashed #fff;
+  line-height: .90;
+}
+
+.avatar {
+  max-height: 36px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit
+}

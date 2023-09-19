@@ -9,7 +9,7 @@ type DecksTableBodyPropsType = Omit<
     userId: string | undefined
     data: Paginated<Deck>
     deleteDeck: (
-      id: string
+      id: string 
     ) => Promise<
       { data: Omit<Deck, 'author' | 'isDeleted' | 'isBlocked'> } | { error: FetchBaseQueryError | SerializedError }
     >
@@ -22,12 +22,7 @@ type DecksTableBodyPropsType = Omit<
   } & ComponentPropsWithoutRef<'tbody'>,
   'children'
 >
-export const DecksTableBody: React.FC<DecksTableBodyPropsType> = ({
-  data,
-  userId,
-  deleteDeck,
-  updateDeck,
-}) => {
+export const DecksTableBody: React.FC<DecksTableBodyPropsType> = ({ data, userId, deleteDeck, updateDeck }) => {
   return (
     <tbody>
       {data.items.map(item => (

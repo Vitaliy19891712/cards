@@ -1,0 +1,13 @@
+  .container {
+    max-width: 1006px;
+    height: 100%;
+    margin: 0 auto;
+
+    .back {
+      display: flex;
+      margin-top: 24px;
+      gap: 6px;
+      align-items: center;
+      text-decoration: none;
+    }
+  }

@@ -6,7 +6,7 @@ export const CreateNewPassword = () => {
   const [resetPassword] = useResetPasswordMutation()
   const navigate = useNavigate()
   let { token } = useParams()
-console.log(token)
+  console.log(token)
 
   const resetPasswordHandler = async ({ password }: { password: string }) => {
     try {

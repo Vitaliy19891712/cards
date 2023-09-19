@@ -15,17 +15,9 @@ export const LoginForm: React.FC<LoginFormPropsType> = ({ onSubmit }) => {
   const { handleSubmit, control } = useLoginForm(onSubmit)
 
   return (
-    <Card className={s.card}>
-      <Typography variant={'large'} as={'h1'}>
-        Sign In
-      </Typography>
+    <Card title={' Sign In'} className={s.card}>
       <form onSubmit={handleSubmit} className={s.form}>
-        <ControlledTextField
-          className={s.textField}
-          label="Email"
-          name="email"
-          control={control}
-        ></ControlledTextField>
+        <ControlledTextField className={s.textField} label="Email" name="email" control={control}></ControlledTextField>
         <ControlledTextField
           className={s.textField}
           label="Password"

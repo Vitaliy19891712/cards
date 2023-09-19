@@ -1,0 +1,44 @@
+   .container {
+     max-width: 1006px;
+     height: 100%;
+     margin: 0 auto;
+
+     .back {
+       display: flex;
+       margin-top: 24px;
+       gap: 6px;
+       align-items: center;
+       text-decoration: none;
+     }
+
+
+     .card {
+       padding: 33px 36px 48px;
+
+       .question {
+         align-self: flex-start;
+         margin-top: 45px;
+       }
+
+       .shots {
+         align-self: flex-start;
+         margin-top: 1px;
+         color: var(--color-dark-100)
+       }
+
+       .button {
+         margin-top: 41px;
+       }
+
+       .answer {
+         align-self: flex-start;
+         margin-top: 35px;
+       }
+
+       .rate {
+         align-self: flex-start;
+         margin-top: 12px;
+       }
+     }
+
+   }

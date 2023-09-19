@@ -17,10 +17,7 @@ export const CheckEmailForm: React.FC<CheckEmailPropsType> = ({ email }) => {
   }
 
   return (
-    <Card className={s.card}>
-      <Typography variant={'large'} as={'h1'}>
-        Check Email
-      </Typography>
+    <Card title={'Check Email'} className={s.card}>
       <CheckEmailLogo className={s.logo} />
       <Typography variant={'body2'} className={s.text}>
         We’ve sent an Email with instructions to {email}

@@ -17,21 +17,11 @@ export const authApi = baseApi.injectEndpoints({
         url: 'v1/auth/logout',
         method: 'POST',
       }),
-      invalidatesTags: ['GetMe'],
-
-      // async onQueryStarted(_, { dispatch, queryFulfilled }) {
-      //   const patchResult = dispatch(
-      //     authApi.util.updateQueryData('getMe', undefined, user => {
-      //       user = undefined
-      //     })
-      //   )
-      //   try {
-      //     await queryFulfilled
-      //   } catch {
-      //     patchResult.undo()
-      //   }
-      // },
-      // transformErrorResponse(baseQueryReturnValue, meta, arg) {},
+      async onQueryStarted(_, { dispatch }) {
+        try {
+          dispatch(baseApi.util.resetApiState())
+        } catch {}
+      },
     }),
     signUp: builder.mutation<User, SignUpArgs>({
       query: body => ({

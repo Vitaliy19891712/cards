@@ -1,17 +1,7 @@
 import { ComponentProps, FC } from 'react'
-
-import {
-  Dialog,
-  DialogContent,
-  DialogOverlay,
-  DialogPortal,
-  DialogClose,
-  DialogTitle,
-} from '@radix-ui/react-dialog'
+import { Dialog, DialogContent, DialogOverlay, DialogPortal, DialogClose, DialogTitle } from '@radix-ui/react-dialog'
 import { clsx } from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
-
-
 import s from './modal.module.scss'
 import { Close } from '../../../assets/icons'
 import { Typography } from '../typography'
@@ -19,16 +9,10 @@ import { Typography } from '../typography'
 export type ModalSize = 'sm' | 'md' | 'lg'
 
 export type ModalProps = {
-  /** The controlled open state of the dialog */
   open: boolean
   onClose?: () => void
   showCloseButton?: boolean
   title?: string
-  /** 'sm' | 'md' | 'lg':
-   * sm - 367px,
-   * md - 532px,
-   * lg - 764px.
-   * For other values use className */
   size?: ModalSize
 } & ComponentProps<'div'>
 
@@ -68,7 +52,7 @@ export const Modal: FC<ModalProps> = ({
   }
   const classNames = {
     overlay: s.overlay,
-    content: getContentClassName( className),
+    content: clsx(className, s.content),
     header: s.header,
     title: s.title,
     closeButton: s.closeButton,
@@ -95,7 +79,6 @@ export const Modal: FC<ModalProps> = ({
                     <Typography variant={'h2'} className={classNames.title}>
                       {title}
                     </Typography>
-                  
                   </DialogTitle>
 
                   {showCloseButton && (
@@ -112,12 +95,6 @@ export const Modal: FC<ModalProps> = ({
       </AnimatePresence>
     </Dialog>
   )
-}
-
-function getContentClassName( className?: string) {
-  
-
-  return clsx(className, s.content)
 }
 
 

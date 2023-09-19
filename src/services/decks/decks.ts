@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import { CreateCard, CreateDeck, Deck, GetCards, GetDecsParams, GetRandomCards, Paginated, SaveGradeCard } from '.'
 import { baseApi } from '../baseApi'
 import { Card } from '../cards'
@@ -62,6 +63,11 @@ export const decksApi = baseApi.injectEndpoints({
         },
       }),
       providesTags: ['GetCards'],
+      // transformErrorResponse: (response, meta, arg) => {
+      //   console.log(response)
+
+      //   toast.error(response.data.message)
+      // },
     }),
     createCard: builder.mutation<Card, CreateCard>({
       query: body => ({

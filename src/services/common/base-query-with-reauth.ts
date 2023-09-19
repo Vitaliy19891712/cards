@@ -7,24 +7,19 @@ const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_BASE_API_URL,
   credentials: 'include',
 })
-export const baseQueryWithReauth: BaseQueryFn<
-  string | FetchArgs,
-  unknown,
-  FetchBaseQueryError
-> = async (args, api, extraOptions) => {
+export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (
+  args,
+  api,
+  extraOptions
+) => {
   await mutex.waitForUnlock()
   let result = await baseQuery(args, api, extraOptions)
   if (result.error && result.error.status === 401) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire()
       try {
-        const refreshResult = await baseQuery(
-          { url: 'v1/auth/refresh-token', method: 'POST' },
-          api,
-          extraOptions
-        )
+        const refreshResult = await baseQuery({ url: 'v1/auth/refresh-token', method: 'POST' }, api, extraOptions)
         if (refreshResult.meta?.response?.status === 204) {
-          console.log(args, api, extraOptions)
           result = await baseQuery(args, api, extraOptions)
         } else {
         }

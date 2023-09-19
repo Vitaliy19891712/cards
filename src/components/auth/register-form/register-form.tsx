@@ -14,10 +14,8 @@ export const RegisterForm: React.FC<RegisterFormPropsType> = ({ onSubmit }) => {
   const { handleSubmit, control } = useRegisterForm(onSubmit)
 
   return (
-    <Card className={s.card}>
-      <Typography variant={'large'} as={'h1'}>
-        Sign Up
-      </Typography>
+    <Card title={" Sign Up"} className={s.card}>
+     
       <form onSubmit={handleSubmit}>
         <ControlledTextField
           className={s.textField}

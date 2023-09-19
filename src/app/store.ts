@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { authApi } from '../services'
+import { baseApi } from '../services'
+import { rtkQueryErrorLogger } from './errorCatchingMiddleware'
 
 export const store = configureStore({
-  reducer: { [authApi.reducerPath]: authApi.reducer },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(authApi.middleware),
+  reducer: { [baseApi.reducerPath]: baseApi.reducer },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(baseApi.middleware).concat(rtkQueryErrorLogger),
 })
 
 export type AppDispatch = typeof store.dispatch

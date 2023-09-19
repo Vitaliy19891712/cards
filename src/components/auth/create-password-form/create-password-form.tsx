@@ -14,10 +14,7 @@ export const CreatePasswordForm: React.FC<CreatePasswordFormPropsType> = ({ onSu
   const { handleSubmit, control } = useCreatePasswordForm(onSubmit)
 
   return (
-    <Card className={s.card}>
-      <Typography variant={'large'} as={'h1'}>
-        Create new password
-      </Typography>
+    <Card title={'Create new password'} className={s.card}>
       <form onSubmit={handleSubmit}>
         <ControlledTextField
           className={s.textField}
@@ -28,8 +25,8 @@ export const CreatePasswordForm: React.FC<CreatePasswordFormPropsType> = ({ onSu
         <Typography variant={'body2'} className={s.text}>
           Create new password and we will send you further instructions to email
         </Typography>
-        <Button fullWidth  type="submit">
-        <Typography variant={'subtitle2'} >Create New Password</Typography>
+        <Button fullWidth type="submit">
+          <Typography variant={'subtitle2'}>Create New Password</Typography>
         </Button>
       </form>
     </Card>

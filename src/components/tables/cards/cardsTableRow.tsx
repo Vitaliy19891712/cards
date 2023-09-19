@@ -9,6 +9,7 @@ import { SerializedError } from '@reduxjs/toolkit'
 import { Card, UpdateCardParams } from '../../../services/cards'
 import { DeleteCardForm } from '../../cards/deleteCard'
 import { UpdateCardForm } from '../../cards/updateCard'
+import { Rating } from '../../ui/rating'
 
 type CardsTableRowPropsType = Omit<
   {
@@ -23,9 +24,7 @@ type CardsTableRowPropsType = Omit<
       questionVideo,
       answerVideo,
       id,
-    }: UpdateCardParams & Pick<Card, 'id'>) => Promise<
-      { data: Card } | { error: FetchBaseQueryError | SerializedError }
-    >
+    }: UpdateCardParams) => Promise<{ data: Card } | { error: FetchBaseQueryError | SerializedError }>
   } & ComponentPropsWithoutRef<'tr'>,
   'children'
 >
@@ -39,14 +38,18 @@ export const CardsTableRow: React.FC<CardsTableRowPropsType> = ({ item, userId, 
   const [isModalDelete, setIsModalDelete] = useState(false)
   const [isModalUpdate, setIsModalUpdate] = useState(false)
   const deleteCardHandler = () => {
-    deleteCard(item.id).then(() => {
-      setIsModalDelete(false)
-    })
+    item &&
+      item.id &&
+      deleteCard(item.id).then(() => {
+        setIsModalDelete(false)
+      })
   }
   const updateCardHandler = ({ answer, question }: { question: string; answer: string }) => {
-    updateCard({ answer, question, id: item.id }).then(() => {
-      setIsModalUpdate(false)
-    })
+    item &&
+      item.id &&
+      updateCard({ answer, question, id: item.id }).then(() => {
+        setIsModalUpdate(false)
+      })
   }
   const icons = (
     <>
@@ -63,7 +66,9 @@ export const CardsTableRow: React.FC<CardsTableRowPropsType> = ({ item, userId, 
   return (
     <tr key={item.id} className={s.row}>
       <CardsTableCell>
-        <Typography variant={'body2'}>{item.question}</Typography>
+        <Typography as={'a'} href={`/packs/${item.id}/card`} variant={'body2'}>
+          {item.question}
+        </Typography>
       </CardsTableCell>
       <CardsTableCell>
         <Typography variant={'body2'}>{item.answer}</Typography>
@@ -74,11 +79,13 @@ export const CardsTableRow: React.FC<CardsTableRowPropsType> = ({ item, userId, 
       <CardsTableCell>
         <Typography variant={'body2'}>
           <div className={s.flex}>
-            <div>{'...stars'}</div> <div>{userId === item.userId && icons}</div>
+            <div>
+              <Rating rating={item.grade} />
+            </div>
+            <div className={s.icons}>{userId === item.userId && icons}</div>
           </div>
         </Typography>
       </CardsTableCell>
-      {/* {userId === item.userId && <CardsTableCell className={s.icons}>{icons}</CardsTableCell>} */}
     </tr>
   )
 }

@@ -15,10 +15,8 @@ export const ForgotPasswordForm: React.FC<ForgotPasswordFormPropsType> = ({ onSu
   const { handleSubmit, control } = useRorgotPasswordForm(onSubmit)
 
   return (
-    <Card className={s.card}>
-      <Typography variant={'large'} as={'h1'}>
-        Forgot your password?{' '}
-      </Typography>
+    <Card title={"Forgot your password?"} className={s.card}>
+     
       <form onSubmit={handleSubmit}>
         <ControlledTextField
           className={s.textField}
