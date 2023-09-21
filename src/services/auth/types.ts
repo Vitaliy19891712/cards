@@ -1,6 +1,6 @@
 export type User = {
   email: string
-  name: string | null
+  name: string
   id: string
   isEmailVerified: boolean
   avatar: string

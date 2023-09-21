@@ -168,9 +168,10 @@ export const PacksList = ({}) => {
               <DecksTableHeader columns={columns} onSort={setSort} sort={sort}></DecksTableHeader>
               <DecksTableBody
                 updateDeck={updateDeck}
+                deleteDeck={id => deleteDeck(id)}
                 data={data}
                 userId={user?.id}
-                deleteDeck={id => deleteDeck(id)}
+               
               ></DecksTableBody>
             </DecksTable>
             <div className={s.pagination}>

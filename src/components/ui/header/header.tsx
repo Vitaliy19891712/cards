@@ -7,7 +7,6 @@ import { User } from '../../../services'
 import { DropdownHeader } from '../../dropdownHeader'
 
 export type HeaderProps = {
-  // isAuth?: boolean
   userInfo?: User | null
   onSignOut: () => void
 } & ComponentProps<'header'>

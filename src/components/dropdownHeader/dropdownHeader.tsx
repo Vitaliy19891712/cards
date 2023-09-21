@@ -1,6 +1,7 @@
 import { ButtonArrow, Person } from '../../assets/icons'
 import { User } from '../../services'
 import { Dropdownmenu } from '../ui/dropdownmenu'
+
 import { Typography } from '../ui/typography'
 import s from './dropdownHeader.module.scss'
 

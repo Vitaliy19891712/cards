@@ -1,4 +1,3 @@
-
 import { User } from '..'
 
 export type GetDeckParams = {
@@ -19,7 +18,7 @@ export type Deck = {
   name: string
   isPrivate?: boolean
   shots: number
-  cover?: string
+  cover?: string | null
   rating: number
   isDeleted?: any
   isBlocked?: any
@@ -30,7 +29,7 @@ export type Deck = {
 
 export type Pagination = {
   totalPages: number
-  currentPages: number
+  currentPage: number
   itemsPerPage: number
   totalItems: number
 }
