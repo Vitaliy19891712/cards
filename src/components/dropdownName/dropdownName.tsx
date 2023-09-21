@@ -8,7 +8,7 @@ import s from './dropdownName.module.scss'
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { SerializedError } from '@reduxjs/toolkit'
 import { UpdatePackForm } from '../packs/updatePack'
-import { Dropdownmenu } from '../ui/dropdownmenu'
+import { Dropdownmenu } from '../ui/dropdownmenu/dropdownmenu'
 
 type DropdownHeaderProps = {
   id: string | undefined

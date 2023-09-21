@@ -6,22 +6,7 @@ const meta = {
   title: 'Components/Header',
   component: Header,
   tags: ['autodocs'],
-  argTypes: {
-    userInfo: {
-      options: [
-        {
-          email: 'vitaliy@murafa.ru',
-          name: 'vitaliy',
-          id: 'fghfghfghgfhfgh',
-          isEmailVerified: true,
-          avatar: null,
-          dreated: '15 декабря',
-          update: '15 декабря',
-        },
-      ],
-      control: { type: 'radio' },
-    },
-  },
+
 } satisfies Meta<typeof Header>
 
 export default meta
