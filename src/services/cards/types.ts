@@ -5,10 +5,10 @@ export type Card = {
   question: string
   answer: string
   shots: number
-  answerImg: string
-  questionImg: string
-  questionVideo: string
-  answerVideo: string
+  answerImg: string | null
+  questionImg: string | null
+  questionVideo: string | null
+  answerVideo: string | null
   grade: number
   created: string
   updated: string

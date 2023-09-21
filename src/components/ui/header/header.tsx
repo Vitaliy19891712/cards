@@ -1,9 +1,9 @@
 import s from './header.module.scss'
 import { LogoHeader } from '../../../assets/icons'
 import { Button } from '../button'
-import { ComponentProps } from 'react'
+
 import avatarLogo from './../../../assets/images/avatar.png'
-import { User, useGetMeQuery } from '../../../services'
+import { useGetMeQuery } from '../../../services'
 import { DropdownHeader } from '../../dropdownHeader'
 import React from 'react'
 
