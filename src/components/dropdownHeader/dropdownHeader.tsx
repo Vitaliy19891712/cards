@@ -1,7 +1,6 @@
 import { ButtonArrow, Person } from '../../assets/icons'
 import { User } from '../../services'
-import { Dropdownmenu } from '../ui/dropdownmenu/dropdownmenu'
-
+import { CommonDropdownmenu } from '../ui/commonDropdownmenu'
 
 import { Typography } from '../ui/typography'
 import s from './dropdownHeader.module.scss'
@@ -14,8 +13,7 @@ type DropdownHeaderProps = {
 
 export const DropdownHeader: React.FC<DropdownHeaderProps> = ({ onSignOut, avatar, userInfo }) => {
   return (
-    <Dropdownmenu
-    
+    <CommonDropdownmenu
       items={[
         <div className={s.item}>
           <img className={s.avatar} src={avatar} alt="avatar" />
@@ -47,6 +45,6 @@ export const DropdownHeader: React.FC<DropdownHeaderProps> = ({ onSignOut, avata
           <img className={s.avatar} src={avatar} alt="avatar" />
         </div>
       }
-    ></Dropdownmenu>
+    ></CommonDropdownmenu>
   )
 }

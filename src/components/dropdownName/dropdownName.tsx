@@ -8,7 +8,7 @@ import s from './dropdownName.module.scss'
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { SerializedError } from '@reduxjs/toolkit'
 import { UpdatePackForm } from '../packs/updatePack'
-import { Dropdownmenu } from '../ui/dropdownmenu/dropdownmenu'
+import { CommonDropdownmenu } from '../ui/commonDropdownmenu'
 
 type DropdownHeaderProps = {
   id: string | undefined
@@ -44,7 +44,7 @@ export const DropdownName: React.FC<DropdownHeaderProps> = ({ deleteDeck, update
   }
 
   return (
-    <Dropdownmenu
+    <CommonDropdownmenu
       items={[
         <a href={`/packs/${id}/learn`} className={s.item}>
           <Play></Play>
@@ -70,6 +70,6 @@ export const DropdownName: React.FC<DropdownHeaderProps> = ({ deleteDeck, update
         </>,
       ]}
       trigger={<Cicle className={s.rotate}></Cicle>}
-    ></Dropdownmenu>
+    ></CommonDropdownmenu>
   )
 }
