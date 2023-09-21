@@ -6,6 +6,7 @@ import { Card } from '../../ui/card'
 import { Typography } from '../../ui/typography'
 import { RateCardForm } from '../rateCard'
 import s from './cardLearn.module.scss'
+import { NavLink } from 'react-router-dom'
 type CardLearnProps = {
   card: CardType | undefined
   id: string | undefined
@@ -18,9 +19,12 @@ export const CardLearn: React.FC<CardLearnProps> = ({ card, gradeUpdateHandler, 
   }
   return (
     <div className={s.container}>
-      <Typography as={'a'} variant={'body2'} className={s.back} href={`/packs/${id}/cards`}>
-        <Arrow></Arrow>Back to Cards List
-      </Typography>
+      <NavLink to={`/packs/${id}/cards`}>
+        {' '}
+        <Typography variant={'body2'} className={s.back}>
+          <Arrow></Arrow>Back to Cards List
+        </Typography>
+      </NavLink>
       <Card title="Create new password" className={s.card}>
         <Typography variant={'body1'} className={s.question}>
           <b>Question:</b> {card?.question}

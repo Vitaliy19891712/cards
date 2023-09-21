@@ -9,6 +9,7 @@ import { DeletePackForm } from '../../packs/deletePack'
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import { SerializedError } from '@reduxjs/toolkit'
 import { UpdatePackForm } from '../../packs/updatePack'
+import { NavLink } from 'react-router-dom'
 
 type DecksTableRowPropsType = Omit<
   {
@@ -76,9 +77,9 @@ export const DecksTableRow: React.FC<DecksTableRowPropsType> = ({ item, userId, 
   return (
     <tr key={item.id} className={s.row}>
       <DecksTableCell>
-        <Typography variant={'body2'} as={'a'} href={`/packs/${item.id}/cards`}>
-          {item.name}
-        </Typography>
+        <NavLink to={`/packs/${item.id}/cards`}>
+          <Typography variant={'body2'}>{item.name}</Typography>
+        </NavLink>
       </DecksTableCell>
       <DecksTableCell>
         <Typography variant={'body2'}>{item.cardsCount}</Typography>

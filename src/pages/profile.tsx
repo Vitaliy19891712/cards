@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { ProfileForm } from '../components/auth/profile-form'
 import { useLogoutMutation, useGetMeQuery, useUpdateMeMutation } from '../services'
 import { Typography } from '../components/ui/typography'
@@ -18,9 +18,11 @@ export const Profile = () => {
   }
   return (
     <div className={s.container}>
-      <Typography as={'a'} variant={'body2'} className={s.back} href={'/packs'}>
-        <Arrow></Arrow>Back to Packs List
-      </Typography>
+      <NavLink to={'/packs'}>
+        <Typography variant={'body2'} className={s.back}>
+          <Arrow></Arrow>Back to Packs List
+        </Typography>
+      </NavLink>
       <ProfileForm
         email={data?.email}
         handlerLoadAvatar={() => {}}

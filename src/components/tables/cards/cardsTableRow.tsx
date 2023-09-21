@@ -10,6 +10,7 @@ import { Card, UpdateCardParams } from '../../../services/cards'
 import { DeleteCardForm } from '../../cards/deleteCard'
 import { UpdateCardForm } from '../../cards/updateCard'
 import { Rating } from '../../ui/rating'
+import { NavLink } from 'react-router-dom'
 
 type CardsTableRowPropsType = Omit<
   {
@@ -66,9 +67,9 @@ export const CardsTableRow: React.FC<CardsTableRowPropsType> = ({ item, userId, 
   return (
     <tr key={item.id} className={s.row}>
       <CardsTableCell>
-        <Typography as={'a'} href={`/packs/${item.id}/card`} variant={'body2'}>
-          {item.question}
-        </Typography>
+        <NavLink to={`/packs/${item.id}/card`}>
+          <Typography variant={'body2'}>{item.question}</Typography>
+        </NavLink>
       </CardsTableCell>
       <CardsTableCell>
         <Typography variant={'body2'}>{item.answer}</Typography>

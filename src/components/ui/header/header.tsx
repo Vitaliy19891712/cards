@@ -6,6 +6,7 @@ import avatarLogo from './../../../assets/images/avatar.png'
 import { useGetMeQuery } from '../../../services'
 import { DropdownHeader } from '../../dropdownHeader'
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export type HeaderProps = {
   // userInfo?: User | null
@@ -28,9 +29,11 @@ export const Header: React.FC<HeaderProps> = React.memo(({ onSignOut }) => {
       <div className={className.container}>
         <LogoHeader />
         {!userInfo ? (
-          <Button variant={'primary'} className={className.button} fullWidth={false} as={'a'} href={'/login'}>
-            Sign In
-          </Button>
+          <NavLink to={'/login'}>
+            <Button variant={'primary'} className={className.button} fullWidth={false}>
+              Sign In
+            </Button>
+          </NavLink>
         ) : (
           <DropdownHeader avatar={avatar} onSignOut={onSignOut} userInfo={userInfo} />
         )}

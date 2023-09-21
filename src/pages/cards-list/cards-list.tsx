@@ -17,7 +17,7 @@ import { ChangeEvent, useState } from 'react'
 import { useDebounce } from '../../assets'
 import { Modal } from '../../components/ui/modal'
 import { CardsTable, CardsTableBody, CardsTableHeader } from '../../components/tables/cards'
-import { useNavigate, useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { AddCardForm } from '../../components/cards/addCard'
 import { useDeleteCardMutation, useUpdateCardMutation } from '../../services/cards'
 import { DropdownName } from '../../components/dropdownName'
@@ -89,9 +89,11 @@ export const CardsList = ({}) => {
 
   return (
     <div className={s.container}>
-      <Typography as={'a'} variant={'body2'} className={s.back} href={'/packs'}>
-        <Arrow></Arrow>Back to Packs List
-      </Typography>
+      <NavLink to={'/packs'}>
+        <Typography variant={'body2'} className={s.back}>
+          <Arrow></Arrow>Back to Packs List
+        </Typography>
+      </NavLink>
       {isSuccess && data.items.length > 0 ? (
         <>
           <div className={s.topLine}>

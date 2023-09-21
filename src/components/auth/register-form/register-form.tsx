@@ -5,6 +5,7 @@ import { Typography } from '../../ui/typography'
 import s from './register-form.module.scss'
 import { useRegisterForm } from './use-register-form'
 import { SubmitHandler } from 'react-hook-form'
+import { NavLink } from 'react-router-dom'
 
 type RegisterFormPropsType = {
   onSubmit: SubmitHandler<{ email: string; password: string; confirmPassword: string }>
@@ -14,15 +15,9 @@ export const RegisterForm: React.FC<RegisterFormPropsType> = ({ onSubmit }) => {
   const { handleSubmit, control } = useRegisterForm(onSubmit)
 
   return (
-    <Card title={" Sign Up"} className={s.card}>
-     
+    <Card title={' Sign Up'} className={s.card}>
       <form onSubmit={handleSubmit}>
-        <ControlledTextField
-          className={s.textField}
-          label="Email"
-          name="email"
-          control={control}
-        ></ControlledTextField>
+        <ControlledTextField className={s.textField} label="Email" name="email" control={control}></ControlledTextField>
         <ControlledTextField
           className={s.textField}
           label="Password"
@@ -42,9 +37,11 @@ export const RegisterForm: React.FC<RegisterFormPropsType> = ({ onSubmit }) => {
       <Typography variant={'body2'} className={s.haveAccount}>
         Already have an account?
       </Typography>
-      <Typography as={'a'} variant={'h3'} className={s.signIn} href={'/login'}>
-        Sugn In
-      </Typography>
+      <NavLink to={'/login'}>
+        <Typography variant={'h3'} className={s.signIn}>
+          Sugn In
+        </Typography>
+      </NavLink>
     </Card>
   )
 }

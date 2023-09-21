@@ -6,6 +6,7 @@ import { Typography } from '../../ui/typography'
 import s from './login-form.module.scss'
 import { useLoginForm } from './use-login-form'
 import { SubmitHandler } from 'react-hook-form'
+import { NavLink } from 'react-router-dom'
 
 type LoginFormPropsType = {
   onSubmit: SubmitHandler<{ email: string; password: string; rememberMe: boolean }>
@@ -30,9 +31,12 @@ export const LoginForm: React.FC<LoginFormPropsType> = ({ onSubmit }) => {
           name="rememberMe"
           control={control}
         ></ControlledCheckbox>
-        <Typography as={'a'} variant={'body2'} className={s.forgot} href={'/forgot-password'}>
-          Forgot password
-        </Typography>
+        <NavLink to={'/forgot-password'}>
+          <Typography variant={'body2'} className={s.forgot}>
+            Forgot password
+          </Typography>
+        </NavLink>
+
         <Button fullWidth className={s.button} type="submit">
           <Typography variant={'subtitle2'}>Sign In</Typography>
         </Button>
@@ -40,9 +44,11 @@ export const LoginForm: React.FC<LoginFormPropsType> = ({ onSubmit }) => {
       <Typography variant={'body2'} className={s.haveAccount}>
         Don't have an account?
       </Typography>
-      <Typography as={'a'} variant={'h3'} className={s.signUp} href={'/register'}>
-        Sugn Up
-      </Typography>
+      <NavLink to={'/register'}>
+        <Typography variant={'h3'} className={s.signUp}>
+          Sugn Up
+        </Typography>
+      </NavLink>
     </Card>
   )
 }

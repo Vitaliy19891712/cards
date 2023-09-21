@@ -5,25 +5,19 @@ import { Typography } from '../../ui/typography'
 import s from './forgot-password-form.module.scss'
 import { useRorgotPasswordForm } from './use-forgot-password-form'
 import { SubmitHandler } from 'react-hook-form'
-
+import { NavLink } from 'react-router-dom'
 
 type ForgotPasswordFormPropsType = {
-  onSubmit: SubmitHandler< {email:string} >
+  onSubmit: SubmitHandler<{ email: string }>
 }
 
 export const ForgotPasswordForm: React.FC<ForgotPasswordFormPropsType> = ({ onSubmit }) => {
   const { handleSubmit, control } = useRorgotPasswordForm(onSubmit)
 
   return (
-    <Card title={"Forgot your password?"} className={s.card}>
-     
+    <Card title={'Forgot your password?'} className={s.card}>
       <form onSubmit={handleSubmit}>
-        <ControlledTextField
-          className={s.textField}
-          label="Email"
-          name="email"
-          control={control}
-        ></ControlledTextField>
+        <ControlledTextField className={s.textField} label="Email" name="email" control={control}></ControlledTextField>
         <Typography variant={'body2'} className={s.text}>
           Enter your email address and we will send you further instructions
         </Typography>
@@ -34,9 +28,11 @@ export const ForgotPasswordForm: React.FC<ForgotPasswordFormPropsType> = ({ onSu
       <Typography variant={'body2'} className={s.haveAccount}>
         Did you remember your password?
       </Typography>
-      <Typography as={'a'} variant={'h3'} className={s.signIn} href={'/login'}>
-        Try logging in
-      </Typography>
+      <NavLink to={'/login'}>
+        <Typography variant={'h3'} className={s.signIn}>
+          Try logging in
+        </Typography>
+      </NavLink>
     </Card>
   )
 }

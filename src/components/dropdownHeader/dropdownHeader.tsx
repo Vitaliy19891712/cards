@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { ButtonArrow, Person } from '../../assets/icons'
 import { User } from '../../services'
 import { CommonDropdownmenu } from '../ui/commonDropdownmenu'
@@ -25,10 +26,12 @@ export const DropdownHeader: React.FC<DropdownHeaderProps> = ({ onSignOut, avata
           </div>
         </div>,
         <div className={s.item}>
-          <Typography as={'a'} variant={'caption'} href={'/'} className={s.string}>
-            <Person />
-            My Profile
-          </Typography>
+          <NavLink to={'/'}>
+            <Typography variant={'caption'} className={s.string}>
+              <Person />
+              My Profile
+            </Typography>
+          </NavLink>
         </div>,
         <div className={s.item}>
           <Typography as={'button'} variant={'caption'} onClick={onSignOut} className={s.string}>
