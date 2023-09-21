@@ -44,9 +44,7 @@ export const PacksList = ({}) => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(10)
   const [maxCardsCount, setMaxCardsCount] = useState<number>(0)
   const [isModal, setIsModal] = useState(false)
-  const [currentMinMaxCardsCount, setCurrentMinMaxCardsCount] = useState<Array<number | undefined>>(
-    [0, maxCardsCount]
-  )
+  const [currentMinMaxCardsCount, setCurrentMinMaxCardsCount] = useState<Array<number | undefined>>([0, maxCardsCount])
 
   const [isMyCard, setIsMyCard] = useState<string>('All Cards')
   const [searchText, setSearchText] = useState('')
@@ -69,7 +67,7 @@ export const PacksList = ({}) => {
   const [createDeck] = useCreateDeckMutation()
   const [deleteDeck] = useDeleteDeckMutation()
   const [updateDeck] = useUpdateDeckMutation()
-  
+
   const createDeckHandler = ({
     name,
     isPrivate,
@@ -128,10 +126,7 @@ export const PacksList = ({}) => {
             onClose={() => setIsModal(false)}
             // showCloseButton={false}
           >
-            <AddPacksForm
-              onSubmit={createDeckHandler}
-              closeModal={() => setIsModal(false)}
-            ></AddPacksForm>
+            <AddPacksForm onSubmit={createDeckHandler} closeModal={() => setIsModal(false)}></AddPacksForm>
           </Modal>
         </div>
         {isSuccess && (
@@ -171,7 +166,6 @@ export const PacksList = ({}) => {
                 deleteDeck={id => deleteDeck(id)}
                 data={data}
                 userId={user?.id}
-               
               ></DecksTableBody>
             </DecksTable>
             <div className={s.pagination}>

@@ -3,15 +3,18 @@ import { LogoHeader } from '../../../assets/icons'
 import { Button } from '../button'
 import { ComponentProps } from 'react'
 import avatarLogo from './../../../assets/images/avatar.png'
-import { User } from '../../../services'
+import { User, useGetMeQuery } from '../../../services'
 import { DropdownHeader } from '../../dropdownHeader'
+import React from 'react'
 
 export type HeaderProps = {
-  userInfo?: User | null
+  // userInfo?: User | null
   onSignOut: () => void
-} & ComponentProps<'header'>
+}
 
-export const Header: React.FC<HeaderProps> = ({ userInfo = null, onSignOut, ...rest }) => {
+export const Header: React.FC<HeaderProps> = React.memo(({ onSignOut }) => {
+  const { data: userInfo } = useGetMeQuery()
+
   const className = {
     header: s.header,
     container: s.container,
@@ -21,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ userInfo = null, onSignOut, ...r
   let avatar = userInfo?.avatar ? userInfo.avatar : avatarLogo
 
   return (
-    <header className={className.header} {...rest}>
+    <header className={className.header}>
       <div className={className.container}>
         <LogoHeader />
         {!userInfo ? (
@@ -34,4 +37,4 @@ export const Header: React.FC<HeaderProps> = ({ userInfo = null, onSignOut, ...r
       </div>
     </header>
   )
-}
+})

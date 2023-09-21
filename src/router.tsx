@@ -6,6 +6,16 @@ import { LearnRandomCards } from './pages/learnRandomCards'
 import { LearnCard } from './pages/learnCard'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { memo, useCallback } from 'react'
+
+const PrivateRoutes = memo(() => {
+  const { data, isLoading } = useGetMeQuery()
+
+  if (isLoading) return <div>Loading...</div>
+
+  return data ? <Outlet /> : <Navigate to="/login" />
+})
+
 const privateRoutes: RouteObject[] = [
   {
     path: '/',
@@ -68,31 +78,22 @@ const router = createBrowserRouter([
 ])
 
 function WithHeader() {
-  const { data } = useGetMeQuery()
   const [logout] = useLogoutMutation()
   const navigate = useNavigate()
-  const onSignOutHandler = () => {
+  const onSignOutHandler = useCallback(() => {
     logout()
       .unwrap()
       .then(() => {
         navigate('/login')
       })
-  }
+  }, [])
   return (
     <>
-      <Header userInfo={data} onSignOut={onSignOutHandler}></Header>
+      <Header onSignOut={onSignOutHandler} />
       <Outlet />
       <ToastContainer />
     </>
   )
-}
-
-function PrivateRoutes() {
-  const { data, isLoading } = useGetMeQuery()
-
-  if (isLoading) return <div>Loading...</div>
-
-  return data ? <Outlet /> : <Navigate to="/login" />
 }
 
 export const Router = () => {
